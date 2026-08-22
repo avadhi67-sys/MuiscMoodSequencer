@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>My Library | SonicFlow</title>
+
+
+    <!-- GLOBAL CSS -->
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+
+    <!-- LIBRARY CSS -->
+
+    <link
+        rel="stylesheet"
+        href="css/library.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="sidebar">
+
+
+    <!-- BRAND -->
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            ♪
+        </div>
+
+
+        <div>
+
+            <h2>
+                Sonic<span>Flow</span>
+            </h2>
+
+            <small>
+                MUSIC INTELLIGENCE
+            </small>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- MENU -->
+
+    <p class="nav-title">
+        MENU
+    </p>
+
+
+    <a
+        href="index.html"
+        class="nav-item"
+    >
+
+        <span>⌂</span>
+
+        Home
+
+    </a>
+
+
+    <a
+        href="search.html"
+        class="nav-item"
+    >
+
+        <span>⌕</span>
+
+        Search
+
+    </a>
+
+
+
+    <!-- YOUR MUSIC -->
+
+    <p class="nav-title music-title">
+        YOUR MUSIC
+    </p>
+
+
+    <a
+        href="library.html"
+        class="nav-item active"
+    >
+
+        <span>♫</span>
+
+        My Library
+
+    </a>
+
+
+    <a
+        href="add-song.html"
+        class="nav-item"
+    >
+
+        <span>＋</span>
+
+        Add Song
+
+    </a>
+
+
+
+    <!-- SONICFLOW -->
+
+    <p class="nav-title music-title">
+        SONICFLOW
+    </p>
+
+
+    <a
+        href="sequencer.html"
+        class="nav-item"
+    >
+
+        <span>✦</span>
+
+        Mood Flow
+
+    </a>
+
+
+
+    <!-- =================================================
+         ACCOUNT
+    ================================================= -->
+
+    <div class="sidebar-account">
+
+
+        <div
+            class="sidebar-avatar"
+            id="sidebarAvatar"
+        >
+            A
+        </div>
+
+
+        <div class="sidebar-account-info">
+
+            <strong id="sidebarName">
+                User
+            </strong>
+
+            <span>
+                Your account
+            </span>
+
+        </div>
+
+
+        <button
+            id="logoutButton"
+            class="logout-button"
+        >
+            Logout
+        </button>
+
+    </div>
+
+
+
+    <!-- =================================================
+         MINI SIDEBAR PLAYER
+    ================================================= -->
+
+    <div class="sidebar-player">
+
+
+        <div class="mini-cover">
+            ♪
+        </div>
+
+
+        <div class="mini-info">
+
+            <strong>
+                Your Flow
+            </strong>
+
+            <span>
+                Ready to play
+            </span>
+
+        </div>
+
+
+        <div class="mini-wave">
+            ≋
+        </div>
+
+    </div>
+
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+<main class="main-content">
+
+
+    <!-- =================================================
+         TOPBAR
+    ================================================= -->
+
+    <header class="topbar">
+
+
+        <div class="search-box">
+
+            <span>
+                ⌕
+            </span>
+
+
+            <input
+                type="text"
+                id="librarySearch"
+                placeholder="Search your music..."
+            >
+
+        </div>
+
+
+        <div
+            class="profile-avatar"
+            id="profileAvatar"
+        >
+            A
+        </div>
+
+    </header>
+
+
+
+    <!-- =================================================
+         LIBRARY HEADER
+    ================================================= -->
+
+    <section class="library-header">
+
+
+        <div>
+
+            <p class="section-label">
+                YOUR MUSIC
+            </p>
+
+
+            <h1>
+                My <span>Library.</span>
+            </h1>
+
+
+            <p class="library-description">
+
+                Every song you add becomes part
+                of your personal SonicFlow journey.
+
+            </p>
+
+        </div>
+
+
+
+        <a
+            href="add-song.html"
+            class="library-add-button"
+        >
+
+            <span>
+                ＋
+            </span>
+
+            Add Song
+
+        </a>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         LIBRARY STATS
+    ================================================= -->
+
+    <section class="library-stats">
+
+
+        <!-- TOTAL SONGS -->
+
+        <div class="stat-card">
+
+
+            <div class="stat-icon">
+                ♫
+            </div>
+
+
+            <div>
+
+                <strong id="totalSongs">
+                    0
+                </strong>
+
+                <span>
+                    Total Songs
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- TOTAL MOODS -->
+
+        <div class="stat-card">
+
+
+            <div class="stat-icon">
+                ✦
+            </div>
+
+
+            <div>
+
+                <strong id="totalMoods">
+                    0
+                </strong>
+
+                <span>
+                    Moods
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- AVERAGE ENERGY -->
+
+        <div class="stat-card">
+
+
+            <div class="stat-icon">
+                ⚡
+            </div>
+
+
+            <div>
+
+                <strong id="averageEnergy">
+                    0
+                </strong>
+
+                <span>
+                    Avg. Energy
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         SONG COLLECTION
+    ================================================= -->
+
+    <section class="songs-section">
+
+
+        <!-- SECTION HEADER -->
+
+        <div class="songs-section-header">
+
+
+            <div>
+
+                <p class="section-label">
+                    COLLECTION
+                </p>
+
+
+                <h2>
+                    Your Songs
+                </h2>
+
+            </div>
+
+
+            <span
+                id="songCountLabel"
+                class="song-count"
+            >
+                0 songs
+            </span>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             SONG CARDS WILL COME HERE
+        ================================================= -->
+
+        <div
+            id="songGrid"
+            class="song-grid"
+        >
+
+        </div>
+
+
+
+        <!-- =================================================
+             EMPTY LIBRARY
+        ================================================= -->
+
+        <div
+            id="emptyLibrary"
+            class="empty-library"
+        >
+
+
+            <div class="empty-icon">
+                ♫
+            </div>
+
+
+            <h3>
+                Your library is waiting.
+            </h3>
+
+
+            <p>
+
+                Add your first song and start
+                building your personalized flow.
+
+            </p>
+
+
+            <a
+                href="add-song.html"
+                class="empty-add-button"
+            >
+
+                ＋ Add Your First Song
+
+            </a>
+
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     BOTTOM MUSIC PLAYER
+===================================================== -->
+
+<div
+    class="music-player"
+    id="musicPlayer"
+>
+
+
+    <!-- =================================================
+         CURRENT SONG
+    ================================================= -->
+
+    <div class="player-song">
+
+
+        <div
+            class="player-cover"
+            id="playerCover"
+        >
+            ♪
+        </div>
+
+
+        <div class="player-song-info">
+
+
+            <strong id="playerTitle">
+                Your Flow
+            </strong>
+
+
+            <span id="playerArtist">
+                Select a song to begin
+            </span>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         CENTER PLAYER
+    ================================================= -->
+
+    <div class="player-center">
+
+
+        <!-- CONTROLS -->
+
+        <div class="player-buttons">
+
+
+            <!-- PREVIOUS -->
+
+            <button
+                type="button"
+                class="player-control"
+                id="previousButton"
+                title="Previous"
+            >
+                ◀
+            </button>
+
+
+            <!-- PLAY / PAUSE -->
+
+            <button
+                type="button"
+                class="player-play"
+                id="playPauseButton"
+                title="Play"
+            >
+                ▶
+            </button>
+
+
+            <!-- NEXT -->
+
+            <button
+                type="button"
+                class="player-control"
+                id="nextButton"
+                title="Next"
+            >
+                ▶
+            </button>
+
+
+        </div>
+
+
+
+        <!-- PROGRESS -->
+
+        <div class="player-progress-container">
+
+
+            <span id="currentTime">
+                0:00
+            </span>
+
+
+            <input
+                type="range"
+                id="playerProgress"
+                min="0"
+                max="100"
+                value="0"
+            >
+
+
+            <span id="duration">
+                0:00
+            </span>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         VOLUME
+    ================================================= -->
+
+    <div class="player-volume">
+
+
+        <span>
+            🔊
+        </span>
+
+
+        <input
+            type="range"
+            id="playerVolume"
+            min="0"
+            max="1"
+            step="0.01"
+            value="1"
+        >
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     AUDIO ELEMENT
+===================================================== -->
+
+<audio
+    id="audioPlayer"
+    preload="metadata"
+>
+</audio>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+
+<!-- STORAGE -->
+
+<script src="js/storage.js"></script>
+
+
+<!-- SONG DATABASE -->
+
+<script src="js/songs.js"></script>
+
+
+<!-- PLAYER -->
+
+<script src="js/player.js"></script>
+
+
+<!-- GLOBAL APP -->
+
+<script src="js/app.js"></script>
+
+
+<!-- LIBRARY -->
+
+<script src="js/library.js"></script>
+
+
+</body>
+
+</html>
