@@ -1,0 +1,150 @@
+/* ==========================================================================
+   SONICFLOW SEARCH STYLES
+   Navy, Purple, Sage Green, Berry Red & Blush Pink
+   Palette: #0D1445 • #BFBFDB • #C2D9D1 • #AD525E • #E0D6D9
+   ========================================================================== */
+
+.search-header {
+    padding: 24px 0 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.search-header h1 {
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--text);
+}
+
+.search-header h1 span {
+    color: #AD525E;
+}
+
+.search-description {
+    max-width: 520px;
+    color: var(--text-muted);
+    font-size: 13.5px;
+    line-height: 1.6;
+}
+
+/* Search Bar Wrapper */
+.search-bar-container {
+    max-width: 680px;
+    margin-top: 6px;
+}
+
+.search-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.search-input-wrapper .search-icon {
+    position: absolute;
+    left: 16px;
+    color: #AD525E;
+    font-size: 16px;
+    pointer-events: none;
+}
+
+.search-input-wrapper input {
+    width: 100%;
+    padding: 14px 44px 14px 44px;
+    border-radius: var(--radius-md);
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 14px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.search-input-wrapper input:focus {
+    background: var(--bg-surface-hover);
+    border-color: #AD525E;
+}
+
+.clear-button {
+    position: absolute;
+    right: 14px;
+    width: 24px;
+    height: 24px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    background: var(--bg-surface-hover);
+    color: var(--text-dim);
+    font-size: 11px;
+    transition: var(--transition);
+}
+
+.clear-button:hover {
+    color: #FFFFFF;
+    background: var(--danger);
+}
+
+/* Mood Filter Pills */
+.filter-pills {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+}
+
+.pill {
+    padding: 8px 16px;
+    border-radius: var(--radius-full);
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 12.5px;
+    font-weight: 700;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.pill:hover {
+    background: var(--bg-surface-hover);
+    color: var(--text);
+    border-color: #AD525E;
+}
+
+[data-theme="dark"] .pill {
+    background: var(--bg-surface-hover);
+    color: var(--text);
+    border: 1px solid rgba(191, 191, 219, 0.28);
+}
+
+[data-theme="dark"] .pill:hover {
+    background: var(--bg-elevated);
+    border-color: var(--accent);
+    color: #FFFFFF;
+}
+
+.pill.active {
+    background: #AD525E !important;
+    color: #FFFFFF !important;
+    border-color: #AD525E !important;
+    font-weight: 800;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .filter-pills {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 8px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .pill {
+        flex-shrink: 0;
+    }
+}

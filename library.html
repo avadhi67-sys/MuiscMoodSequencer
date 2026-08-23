@@ -2,707 +2,209 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>My Library | SonicFlow</title>
-
-
-    <!-- GLOBAL CSS -->
-
-    <link
-        rel="stylesheet"
-        href="css/style.css"
-    >
-
-
-    <!-- LIBRARY CSS -->
-
-    <link
-        rel="stylesheet"
-        href="css/library.css"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Library • SonicFlow</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/library.css">
+    <script src="js/theme.js"></script>
 </head>
-
 
 <body>
 
+<!-- Background Subtle Mesh -->
+<div class="background-orb orb-one"></div>
+<div class="background-orb orb-two"></div>
+<div class="background-orb orb-three"></div>
 
-<!-- =====================================================
-     SIDEBAR
-===================================================== -->
-
+<!-- SIDEBAR -->
 <aside class="sidebar">
-
-
-    <!-- BRAND -->
-
     <div class="brand">
-
-        <div class="brand-icon">
-            ♪
-        </div>
-
-
+        <div class="brand-icon">♪</div>
         <div>
-
-            <h2>
-                Sonic<span>Flow</span>
-            </h2>
-
-            <small>
-                MUSIC INTELLIGENCE
-            </small>
-
+            <h2>Sonic<span>Flow</span></h2>
+            <small>Music Intelligence</small>
         </div>
-
     </div>
 
-
-
-    <!-- MENU -->
-
-    <p class="nav-title">
-        MENU
-    </p>
-
-
-    <a
-        href="index.html"
-        class="nav-item"
-    >
-
-        <span>⌂</span>
-
-        Home
-
-    </a>
-
-
-    <a
-        href="search.html"
-        class="nav-item"
-    >
-
-        <span>⌕</span>
-
-        Search
-
-    </a>
-
-
-
-    <!-- YOUR MUSIC -->
-
-    <p class="nav-title music-title">
-        YOUR MUSIC
-    </p>
-
-
-    <a
-        href="library.html"
-        class="nav-item active"
-    >
-
-        <span>♫</span>
-
-        My Library
-
-    </a>
-
-
-    <a
-        href="add-song.html"
-        class="nav-item"
-    >
-
-        <span>＋</span>
-
-        Add Song
-
-    </a>
-
-
-
-    <!-- SONICFLOW -->
-
-    <p class="nav-title music-title">
-        SONICFLOW
-    </p>
-
-
-    <a
-        href="sequencer.html"
-        class="nav-item"
-    >
-
-        <span>✦</span>
-
-        Mood Flow
-
-    </a>
-
-
-
-    <!-- =================================================
-         ACCOUNT
-    ================================================= -->
-
-    <div class="sidebar-account">
-
-
-        <div
-            class="sidebar-avatar"
-            id="sidebarAvatar"
-        >
-            A
-        </div>
-
-
-        <div class="sidebar-account-info">
-
-            <strong id="sidebarName">
-                User
-            </strong>
-
-            <span>
-                Your account
-            </span>
-
-        </div>
-
-
-        <button
-            id="logoutButton"
-            class="logout-button"
-        >
-            Logout
-        </button>
-
-    </div>
-
-
-
-    <!-- =================================================
-         MINI SIDEBAR PLAYER
-    ================================================= -->
-
-    <div class="sidebar-player">
-
-
-        <div class="mini-cover">
-            ♪
-        </div>
-
-
-        <div class="mini-info">
-
-            <strong>
-                Your Flow
-            </strong>
-
-            <span>
-                Ready to play
-            </span>
-
-        </div>
-
-
-        <div class="mini-wave">
-            ≋
-        </div>
-
-    </div>
-
-
-</aside>
-
-
-
-<!-- =====================================================
-     MAIN CONTENT
-===================================================== -->
-
-<main class="main-content">
-
-
-    <!-- =================================================
-         TOPBAR
-    ================================================= -->
-
-    <header class="topbar">
-
-
-        <div class="search-box">
-
-            <span>
-                ⌕
-            </span>
-
-
-            <input
-                type="text"
-                id="librarySearch"
-                placeholder="Search your music..."
-            >
-
-        </div>
-
-
-        <div
-            class="profile-avatar"
-            id="profileAvatar"
-        >
-            A
-        </div>
-
-    </header>
-
-
-
-    <!-- =================================================
-         LIBRARY HEADER
-    ================================================= -->
-
-    <section class="library-header">
-
-
-        <div>
-
-            <p class="section-label">
-                YOUR MUSIC
-            </p>
-
-
-            <h1>
-                My <span>Library.</span>
-            </h1>
-
-
-            <p class="library-description">
-
-                Every song you add becomes part
-                of your personal SonicFlow journey.
-
-            </p>
-
-        </div>
-
-
-
-        <a
-            href="add-song.html"
-            class="library-add-button"
-        >
-
-            <span>
-                ＋
-            </span>
-
-            Add Song
-
+    <nav class="navigation">
+        <p class="nav-title">Menu</p>
+        <a href="index.html" class="nav-item">
+            <span>⌂</span> Home
+        </a>
+        <a href="search.html" class="nav-item">
+            <span>⌕</span> Search
         </a>
 
+        <p class="nav-title music-title">Your Music</p>
+        <a href="library.html" class="nav-item active">
+            <span>♫</span> My Library
+        </a>
+        <a href="artists.html" class="nav-item">
+            <span>🎤</span> My Artists
+        </a>
+        <a href="add-song.html" class="nav-item">
+            <span>＋</span> Add Song
+        </a>
+        <a href="add-artist.html" class="nav-item">
+            <span>＋</span> Add Artist
+        </a>
 
-    </section>
+        <p class="nav-title music-title">SonicFlow</p>
+        <a href="sequencer.html" class="nav-item">
+            <span>✦</span> Mood Flow
+        </a>
+    </nav>
 
-
-
-    <!-- =================================================
-         LIBRARY STATS
-    ================================================= -->
-
-    <section class="library-stats">
-
-
-        <!-- TOTAL SONGS -->
-
-        <div class="stat-card">
-
-
-            <div class="stat-icon">
-                ♫
+    <div class="sidebar-bottom">
+        <div class="sidebar-player" onclick="window.location.href='sequencer.html'">
+            <div class="mini-cover">♪</div>
+            <div class="mini-info">
+                <strong>Your Flow</strong>
+                <span>Ready to sequence</span>
             </div>
-
-
-            <div>
-
-                <strong id="totalSongs">
-                    0
-                </strong>
-
-                <span>
-                    Total Songs
-                </span>
-
-            </div>
-
-
+            <div class="mini-wave">≋</div>
         </div>
 
-
-
-        <!-- TOTAL MOODS -->
-
-        <div class="stat-card">
-
-
-            <div class="stat-icon">
-                ✦
+        <div class="sidebar-account">
+            <div class="account-avatar" id="sidebarAvatar">U</div>
+            <div class="account-details">
+                <strong id="sidebarName">User</strong>
+                <span>Account</span>
             </div>
-
-
-            <div>
-
-                <strong id="totalMoods">
-                    0
-                </strong>
-
-                <span>
-                    Moods
-                </span>
-
-            </div>
-
-
+            <button id="logoutButton" class="logout-button" title="Log out">Logout</button>
         </div>
+    </div>
+</aside>
 
-
-
-        <!-- AVERAGE ENERGY -->
-
-        <div class="stat-card">
-
-
-            <div class="stat-icon">
-                ⚡
-            </div>
-
-
-            <div>
-
-                <strong id="averageEnergy">
-                    0
-                </strong>
-
-                <span>
-                    Avg. Energy
-                </span>
-
-            </div>
-
-
+<!-- MAIN CONTENT -->
+<main class="main-content">
+    <header class="topbar">
+        <div class="mobile-brand">
+            Sonic<span>Flow</span>
         </div>
-
-
-    </section>
-
-
-
-    <!-- =================================================
-         SONG COLLECTION
-    ================================================= -->
-
-    <section class="songs-section">
-
-
-        <!-- SECTION HEADER -->
-
-        <div class="songs-section-header">
-
-
-            <div>
-
-                <p class="section-label">
-                    COLLECTION
-                </p>
-
-
-                <h2>
-                    Your Songs
-                </h2>
-
-            </div>
-
-
-            <span
-                id="songCountLabel"
-                class="song-count"
-            >
-                0 songs
-            </span>
-
-
+        <div class="search-box">
+            <span>⌕</span>
+            <input type="text" id="librarySearch" placeholder="Filter songs by title, artist, mood...">
         </div>
-
-
-
-        <!-- =================================================
-             SONG CARDS WILL COME HERE
-        ================================================= -->
-
-        <div
-            id="songGrid"
-            class="song-grid"
-        >
-
-        </div>
-
-
-
-        <!-- =================================================
-             EMPTY LIBRARY
-        ================================================= -->
-
-        <div
-            id="emptyLibrary"
-            class="empty-library"
-        >
-
-
-            <div class="empty-icon">
-                ♫
+        <div class="topbar-actions">
+            <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle dark and light mode">
+                <span class="theme-icon">🌙</span>
+                <span class="theme-label">Dark</span>
+            </button>
+            <div class="profile">
+                <div class="profile-avatar" id="profileAvatar">U</div>
             </div>
+        </div>
+    </header>
 
-
-            <h3>
-                Your library is waiting.
-            </h3>
-
-
-            <p>
-
-                Add your first song and start
-                building your personalized flow.
-
+    <!-- LIBRARY HEADER -->
+    <section class="library-header">
+        <div>
+            <span class="section-tag">COLLECTION</span>
+            <h1>My <span>Library.</span></h1>
+            <p class="library-description">
+                Your analyzed audio tracks cataloged with acoustic metadata. Every track fuels the SonicFlow sequencing engine.
             </p>
-
-
-            <a
-                href="add-song.html"
-                class="empty-add-button"
-            >
-
-                ＋ Add Your First Song
-
-            </a>
-
-
         </div>
 
-
+        <a href="add-song.html" class="library-add-button">
+            <span>＋</span> Add New Track
+        </a>
     </section>
 
+    <!-- STATS ROW -->
+    <section class="library-stats">
+        <div class="stat-card">
+            <div class="stat-icon">♫</div>
+            <div>
+                <strong id="totalSongs">0</strong>
+                <span>Total Tracks</span>
+            </div>
+        </div>
 
+        <div class="stat-card">
+            <div class="stat-icon">✦</div>
+            <div>
+                <strong id="totalMoods">0</strong>
+                <span>Unique Moods</span>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">⚡</div>
+            <div>
+                <strong id="averageEnergy">0</strong>
+                <span>Avg Energy (1-10)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SONGS SECTION -->
+    <section class="songs-section">
+        <div class="songs-section-header">
+            <div>
+                <h2>Your Track Collection</h2>
+            </div>
+            <span id="songCountLabel" class="song-count">0 songs</span>
+        </div>
+
+        <!-- Dynamic Grid -->
+        <div id="songGrid" class="song-grid"></div>
+
+        <!-- Empty State -->
+        <div id="emptyLibrary" class="empty-library">
+            <div class="empty-icon">♫</div>
+            <h3>Your library is empty</h3>
+            <p>Add your first song with custom mood and tempo tags to start building seamless flows.</p>
+            <a href="add-song.html" class="primary-button">
+                <span>＋</span> Add Your First Track
+            </a>
+        </div>
+    </section>
 </main>
 
-
-
-<!-- =====================================================
-     BOTTOM MUSIC PLAYER
-===================================================== -->
-
-<div
-    class="music-player"
-    id="musicPlayer"
->
-
-
-    <!-- =================================================
-         CURRENT SONG
-    ================================================= -->
-
+<!-- MINIMAL BOTTOM MUSIC PLAYER -->
+<div class="music-player" id="musicPlayer">
+    <!-- Current Song Info -->
     <div class="player-song">
-
-
-        <div
-            class="player-cover"
-            id="playerCover"
-        >
-            ♪
-        </div>
-
-
+        <div class="player-cover" id="playerCover">♪</div>
         <div class="player-song-info">
-
-
-            <strong id="playerTitle">
-                Your Flow
-            </strong>
-
-
-            <span id="playerArtist">
-                Select a song to begin
-            </span>
-
-
+            <strong id="playerTitle">Your Flow</strong>
+            <span id="playerArtist">Select a track to play</span>
         </div>
-
-
     </div>
 
-
-
-    <!-- =================================================
-         CENTER PLAYER
-    ================================================= -->
-
+    <!-- Center Playback Controls & Progress -->
     <div class="player-center">
-
-
-        <!-- CONTROLS -->
-
         <div class="player-buttons">
-
-
-            <!-- PREVIOUS -->
-
-            <button
-                type="button"
-                class="player-control"
-                id="previousButton"
-                title="Previous"
-            >
-                ◀
-            </button>
-
-
-            <!-- PLAY / PAUSE -->
-
-            <button
-                type="button"
-                class="player-play"
-                id="playPauseButton"
-                title="Play"
-            >
-                ▶
-            </button>
-
-
-            <!-- NEXT -->
-
-            <button
-                type="button"
-                class="player-control"
-                id="nextButton"
-                title="Next"
-            >
-                ▶
-            </button>
-
-
+            <button type="button" class="player-control" id="previousButton" title="Previous Track">◀</button>
+            <button type="button" class="player-play" id="playPauseButton" title="Play / Pause">▶</button>
+            <button type="button" class="player-control" id="nextButton" title="Next Track">▶</button>
         </div>
-
-
-
-        <!-- PROGRESS -->
 
         <div class="player-progress-container">
-
-
-            <span id="currentTime">
-                0:00
-            </span>
-
-
-            <input
-                type="range"
-                id="playerProgress"
-                min="0"
-                max="100"
-                value="0"
-            >
-
-
-            <span id="duration">
-                0:00
-            </span>
-
-
+            <span id="currentTime">0:00</span>
+            <input type="range" id="playerProgress" min="0" max="100" value="0">
+            <span id="duration">0:00</span>
         </div>
-
-
     </div>
 
-
-
-    <!-- =================================================
-         VOLUME
-    ================================================= -->
-
+    <!-- Volume Slider -->
     <div class="player-volume">
-
-
-        <span>
-            🔊
-        </span>
-
-
-        <input
-            type="range"
-            id="playerVolume"
-            min="0"
-            max="1"
-            step="0.01"
-            value="1"
-        >
-
-
+        <span>🔊</span>
+        <input type="range" id="playerVolume" min="0" max="1" step="0.01" value="1">
     </div>
-
-
 </div>
 
+<!-- Audio Element -->
+<audio id="audioPlayer" preload="metadata"></audio>
 
-
-<!-- =====================================================
-     AUDIO ELEMENT
-===================================================== -->
-
-<audio
-    id="audioPlayer"
-    preload="metadata"
->
-</audio>
-
-
-
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
-
-
-<!-- STORAGE -->
-
+<!-- Scripts -->
 <script src="js/storage.js"></script>
-
-
-<!-- SONG DATABASE -->
-
 <script src="js/songs.js"></script>
-
-
-<!-- PLAYER -->
-
 <script src="js/player.js"></script>
-
-
-<!-- GLOBAL APP -->
-
 <script src="js/app.js"></script>
-
-
-<!-- LIBRARY -->
-
 <script src="js/library.js"></script>
-
-
 </body>
-
 </html>

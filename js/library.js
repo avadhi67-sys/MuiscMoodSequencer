@@ -302,23 +302,12 @@
 
 
             <div class="song-actions">
-
-                <button
-                    type="button"
-                    class="play-song"
-                >
-                    ▶
+                <button type="button" class="play-song">
+                    <span>▶</span> Play
                 </button>
-
-
-                <button
-                    type="button"
-                    class="delete-song"
-                    title="Delete song"
-                >
-                    🗑
+                <button type="button" class="delete-song" title="Delete song">
+                    ✕
                 </button>
-
             </div>
 
         `;

@@ -1,838 +1,390 @@
-/* ============================================
-   SONICFLOW 2.0
-   ADD SONG PAGE
-============================================ */
+/* ==========================================================================
+   SONICFLOW ADD SONG STYLES
+   Navy, Purple, Sage Green, Berry Red & Blush Pink
+   Palette: #0D1445 • #BFBFDB • #C2D9D1 • #AD525E • #E0D6D9
+   ========================================================================== */
 
-
-/* ============================================
+/* ==========================================================================
    HEADER
-============================================ */
+   ========================================================================== */
 
 .add-song-header {
-    padding: 35px 0 32px;
-}
-
-.add-song-header .section-label {
-    display: block;
-
-    margin-bottom: 12px;
-
-    color: #a78bfa;
-
-    font-size: 11px;
-    font-weight: 700;
-
-    letter-spacing: 3px;
-    text-transform: uppercase;
+    padding: 24px 0 28px;
 }
 
 .add-song-header h1 {
-    max-width: 750px;
-
-    font-size: 52px;
-
-    line-height: 1.05;
-
-    letter-spacing: -2px;
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    margin-top: 6px;
 }
 
 .add-song-header h1 span {
-    background:
-        linear-gradient(
-            90deg,
-            #8b5cf6,
-            #60a5fa,
-            #f472b6
-        );
-
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    color: transparent;
+    color: #AD525E;
 }
 
 .section-description {
-    max-width: 650px;
-
-    margin-top: 18px;
-
-    color: #8f93ae;
-
-    font-size: 15px;
-
-    line-height: 1.7;
+    max-width: 540px;
+    margin-top: 10px;
+    color: var(--text-muted);
+    font-size: 13.5px;
+    line-height: 1.6;
 }
 
-
-/* ============================================
-   MAIN ADD SONG LAYOUT
-============================================ */
+/* ==========================================================================
+   CONTAINER & FORM CARD
+   ========================================================================== */
 
 .add-song-container {
     display: grid;
-
-    grid-template-columns:
-        minmax(0, 1.15fr)
-        minmax(300px, 0.75fr);
-
-    gap: 24px;
-
-    max-width: 1100px;
+    grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+    gap: 20px;
+    max-width: 1050px;
+    padding-bottom: 80px;
 }
 
-
-/* ============================================
-   FORM CARD
-============================================ */
-
-.form-card {
+.form-card, .info-card {
+    padding: 28px;
+    border-radius: var(--radius-lg);
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
     position: relative;
-
-    padding: 30px;
-
-    border:
-        1px solid rgba(255,255,255,0.09);
-
-    border-radius: 22px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(25,27,55,0.86),
-            rgba(12,14,30,0.88)
-        );
-
-    box-shadow:
-        0 20px 60px rgba(0,0,0,0.18);
-
-    overflow: hidden;
+    transition: var(--transition);
 }
 
-.form-card::before {
-    content: "";
-
-    position: absolute;
-
-    width: 250px;
-    height: 250px;
-
-    top: -140px;
-    right: -110px;
-
-    border-radius: 50%;
-
-    background: #8b5cf6;
-
-    filter: blur(100px);
-
-    opacity: 0.10;
-
-    pointer-events: none;
+.form-card:hover, .info-card:hover {
+    border-color: #AD525E;
 }
-
-
-/* ============================================
-   FORM HEADER
-============================================ */
 
 .form-header {
-    position: relative;
-
     display: flex;
-
     align-items: center;
-
     gap: 14px;
-
-    margin-bottom: 28px;
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
 }
 
 .form-icon {
-    width: 48px;
-    height: 48px;
-
+    width: 46px;
+    height: 46px;
     display: flex;
-
     align-items: center;
     justify-content: center;
-
-    border-radius: 14px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #8b5cf6,
-            #ec4899
-        );
-
-    color: white;
-
-    font-size: 21px;
-
-    box-shadow:
-        0 8px 25px rgba(139,92,246,0.25);
+    border-radius: var(--radius-sm);
+    background: #AD525E;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: 800;
+    flex-shrink: 0;
 }
 
 .form-header h2 {
-    font-size: 20px;
-
-    letter-spacing: -0.4px;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--text);
 }
 
 .form-header p {
-    margin-top: 4px;
-
-    color: #777b96;
-
-    font-size: 11px;
+    font-size: 12px;
+    color: #AD525E;
+    margin-top: 2px;
 }
 
-
-/* ============================================
-   FORM
-============================================ */
-
-#addSongForm {
-    position: relative;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 20px;
+/* Form Fields */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
 }
-
-
-/* ============================================
-   FORM GROUP
-============================================ */
 
 .form-group {
     display: flex;
-
     flex-direction: column;
-
-    gap: 8px;
+    gap: 7px;
+    margin-bottom: 18px;
 }
 
 .form-group label {
-    color: #c3c5d5;
-
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+.label-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.field-hint {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.artist-select-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.range-value {
+    font-size: 11px;
+    font-weight: 800;
+    color: #FFFFFF;
+    background: #AD525E;
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
 }
 
 .form-group input[type="text"],
 .form-group input[type="number"],
 .form-group select {
     width: 100%;
-
-    padding: 13px 15px;
-
-    border:
-        1px solid rgba(255,255,255,0.09);
-
-    border-radius: 11px;
-
-    outline: none;
-
-    background:
-        rgba(255,255,255,0.035);
-
-    color: #f5f5ff;
-
-    font-family: inherit;
-
-    font-size: 13px;
-
-    transition:
-        border-color 0.25s ease,
-        background 0.25s ease,
-        box-shadow 0.25s ease;
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-surface-hover);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 13.5px;
+    transition: var(--transition);
 }
 
-.form-group input[type="text"]::placeholder,
-.form-group input[type="number"]::placeholder {
-    color: #666a83;
-}
-
-.form-group input[type="text"]:focus,
-.form-group input[type="number"]:focus,
+.form-group input:focus,
 .form-group select:focus {
-    border-color: #8b5cf6;
-
-    background:
-        rgba(139,92,246,0.05);
-
-    box-shadow:
-        0 0 0 3px rgba(139,92,246,0.10);
+    border-color: #AD525E;
 }
 
-.form-group select {
-    cursor: pointer;
-}
-
-.form-group select option {
-    background: #101226;
-
-    color: white;
-}
-
-.form-group small {
-    color: #656981;
-
-    font-size: 10px;
-}
-
-
-/* ============================================
-   LABEL ROW
-============================================ */
-
-.label-row {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-}
-
-.range-value {
-    min-width: 28px;
-
-    padding: 4px 8px;
-
-    border-radius: 7px;
-
-    background:
-        rgba(139,92,246,0.14);
-
-    color: #b99cff;
-
-    font-size: 11px;
-    font-weight: 700;
-
-    text-align: center;
-}
-
-
-/* ============================================
-   ENERGY SLIDER
-============================================ */
-
-#songEnergy {
+/* Range Slider */
+.form-group input[type="range"] {
     width: 100%;
-
     height: 5px;
-
-    margin-top: 5px;
-
     appearance: none;
-
     -webkit-appearance: none;
+    background: #AD525E;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    margin: 8px 0;
+}
 
-    border-radius: 10px;
-
-    outline: none;
-
-    background:
-        linear-gradient(
-            90deg,
-            #8b5cf6,
-            #ec4899
-        );
-
+.form-group input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #0D1445;
     cursor: pointer;
 }
 
-#songEnergy::-webkit-slider-thumb {
-    width: 18px;
-    height: 18px;
-
-    appearance: none;
-
-    -webkit-appearance: none;
-
-    border: 3px solid #111326;
-
-    border-radius: 50%;
-
-    background: #b99cff;
-
-    box-shadow:
-        0 0 12px rgba(139,92,246,0.5);
-
-    cursor: pointer;
-}
-
-#songEnergy::-moz-range-thumb {
-    width: 18px;
-    height: 18px;
-
-    border: 3px solid #111326;
-
-    border-radius: 50%;
-
-    background: #b99cff;
-
-    box-shadow:
-        0 0 12px rgba(139,92,246,0.5);
-
-    cursor: pointer;
+[data-theme="dark"] .form-group input[type="range"]::-webkit-slider-thumb {
+    background: #FFFFFF;
 }
 
 .range-labels {
     display: flex;
-
     justify-content: space-between;
-
-    color: #62667e;
-
-    font-size: 9px;
+    font-size: 10px;
+    color: var(--text-dim);
 }
 
-
-/* ============================================
-   AUDIO UPLOAD
-============================================ */
-
+/* Audio Dropzone */
 .audio-upload {
     display: flex;
-
     align-items: center;
-
     gap: 14px;
-
-    width: 100%;
-
-    padding: 16px;
-
-    border:
-        1px dashed rgba(139,92,246,0.35);
-
-    border-radius: 13px;
-
-    background:
-        rgba(139,92,246,0.035);
-
+    padding: 20px;
+    border-radius: var(--radius-md);
+    background: var(--bg-surface-hover);
+    border: 1px dashed var(--border);
     cursor: pointer;
-
-    transition:
-        border-color 0.25s ease,
-        background 0.25s ease,
-        transform 0.25s ease;
+    transition: var(--transition);
 }
 
 .audio-upload:hover {
-    border-color: #8b5cf6;
+    border-color: #AD525E;
+    background: var(--bg-surface);
+}
 
-    background:
-        rgba(139,92,246,0.08);
+[data-theme="dark"] .audio-upload {
+    background: var(--bg-surface);
+    border-color: rgba(191, 191, 219, 0.3);
+}
 
-    transform: translateY(-2px);
+[data-theme="dark"] .audio-upload:hover {
+    background: var(--bg-surface-hover);
+    border-color: var(--accent);
 }
 
 .upload-icon {
     width: 42px;
     height: 42px;
-
     display: flex;
-
     align-items: center;
     justify-content: center;
-
+    border-radius: var(--radius-sm);
+    background: #AD525E;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 800;
     flex-shrink: 0;
-
-    border-radius: 11px;
-
-    background:
-        rgba(139,92,246,0.14);
-
-    color: #b99cff;
-
-    font-size: 20px;
 }
 
-.audio-upload strong {
+.upload-text strong {
     display: block;
-
-    overflow: hidden;
-
-    color: #dedff0;
-
-    font-size: 12px;
-
-    text-overflow: ellipsis;
-
-    white-space: nowrap;
-}
-
-.audio-upload span {
-    display: block;
-
-    margin-top: 4px;
-
-    color: #696d85;
-
-    font-size: 9px;
-}
-
-
-/* ============================================
-   FORM MESSAGE
-============================================ */
-
-.form-message {
-    min-height: 0;
-
-    color: #a7f3d0;
-
-    font-size: 11px;
-
-    line-height: 1.5;
-}
-
-.form-message.error {
-    color: #fda4af;
-}
-
-.form-message.success {
-    color: #86efac;
-}
-
-
-/* ============================================
-   ADD BUTTON
-============================================ */
-
-.add-song-button {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 12px;
-
-    width: 100%;
-
-    padding: 15px;
-
-    border: none;
-
-    border-radius: 12px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #7c3aed,
-            #a855f7,
-            #ec4899
-        );
-
-    color: white;
-
-    font-family: inherit;
-
     font-size: 13px;
     font-weight: 700;
+    color: var(--text);
+}
 
+.upload-text span {
+    font-size: 11px;
+    color: #AD525E;
+}
+
+/* Submit Button */
+.add-song-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px;
+    border-radius: var(--radius-sm);
+    background: #AD525E;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 800;
+    margin-top: 10px;
+    transition: var(--transition);
+    border: none;
     cursor: pointer;
-
-    box-shadow:
-        0 10px 30px rgba(139,92,246,0.25);
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        opacity 0.25s ease;
 }
 
 .add-song-button:hover {
+    background: #933E4A;
     transform: translateY(-2px);
-
-    box-shadow:
-        0 15px 40px rgba(139,92,246,0.38);
+    box-shadow: 0 4px 14px rgba(173, 82, 94, 0.4);
 }
 
-.add-song-button:active {
-    transform: scale(0.98);
+/* Form Message */
+.form-message {
+    display: none;
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    font-size: 12.5px;
+    font-weight: 600;
+    margin-bottom: 12px;
 }
 
-.add-song-button:disabled {
-    opacity: 0.55;
-
-    cursor: not-allowed;
-
-    transform: none;
+.form-message.success {
+    display: block;
+    background: rgba(5, 150, 105, 0.08);
+    border: 1px solid rgba(5, 150, 105, 0.25);
+    color: #059669;
 }
 
+.form-message.error {
+    display: block;
+    background: rgba(220, 38, 38, 0.08);
+    border: 1px solid rgba(220, 38, 38, 0.25);
+    color: #dc2626;
+}
 
-/* ============================================
-   RIGHT INFO CARD
-============================================ */
+/* ==========================================================================
+   INFO CARD
+   ========================================================================== */
 
 .info-card {
-    position: relative;
-
-    align-self: start;
-
-    padding: 28px;
-
-    border:
-        1px solid rgba(255,255,255,0.08);
-
-    border-radius: 22px;
-
-    background:
-        rgba(255,255,255,0.025);
-
-    overflow: hidden;
-}
-
-.info-card::after {
-    content: "";
-
-    position: absolute;
-
-    width: 180px;
-    height: 180px;
-
-    bottom: -100px;
-    right: -80px;
-
-    border-radius: 50%;
-
-    background: #ec4899;
-
-    filter: blur(80px);
-
-    opacity: 0.08;
-
-    pointer-events: none;
-}
-
-.info-card .section-label {
-    display: block;
-
-    margin-bottom: 12px;
-
-    color: #a78bfa;
-
-    font-size: 10px;
-    font-weight: 700;
-
-    letter-spacing: 2.5px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: fit-content;
 }
 
 .info-card h2 {
-    max-width: 350px;
-
-    font-size: 28px;
-
-    line-height: 1.15;
-
-    letter-spacing: -0.8px;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text);
 }
 
-.info-card h2 span {
-    background:
-        linear-gradient(
-            90deg,
-            #a78bfa,
-            #f472b6
-        );
-
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    color: transparent;
-}
-
-.info-card > p:not(.section-label) {
-    margin-top: 12px;
-
-    color: #7d819b;
-
-    font-size: 12px;
-
-    line-height: 1.7;
-}
-
-
-/* ============================================
-   FACTOR CARDS
-============================================ */
-
-.factor-card {
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    margin-top: 18px;
-
-    padding: 13px;
-
-    border:
-        1px solid rgba(255,255,255,0.06);
-
-    border-radius: 13px;
-
-    background:
-        rgba(255,255,255,0.025);
-
-    transition:
-        transform 0.25s ease,
-        background 0.25s ease,
-        border-color 0.25s ease;
-}
-
-.factor-card:hover {
-    transform: translateX(4px);
-
-    border-color:
-        rgba(139,92,246,0.25);
-
-    background:
-        rgba(139,92,246,0.06);
-}
-
-.factor-icon {
-    width: 38px;
-    height: 38px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    flex-shrink: 0;
-
-    border-radius: 10px;
-
-    background:
-        rgba(139,92,246,0.13);
-
-    color: #b99cff;
-
-    font-size: 16px;
-}
-
-.factor-card strong {
-    display: block;
-
-    color: #e4e4f0;
-
-    font-size: 12px;
-}
-
-.factor-card span {
-    display: block;
-
-    margin-top: 3px;
-
-    color: #696d85;
-
-    font-size: 9px;
-
-    line-height: 1.5;
-}
-
-
-/* ============================================
-   TIP
-============================================ */
-
-.tip-card {
-    display: flex;
-
-    align-items: flex-start;
-
-    gap: 10px;
-
-    margin-top: 22px;
-
-    padding: 14px;
-
-    border:
-        1px solid rgba(96,165,250,0.12);
-
-    border-radius: 12px;
-
-    background:
-        rgba(96,165,250,0.04);
-}
-
-.tip-card > span {
-    font-size: 15px;
-}
-
-.tip-card p {
-    color: #7d819b;
-
-    font-size: 10px;
-
+.info-card > p {
+    color: var(--text-muted);
+    font-size: 12.5px;
     line-height: 1.6;
 }
 
-.tip-card strong {
-    color: #b7c7ff;
+.factor-guide {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
+.factor-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    border-radius: var(--radius-md);
+    background: var(--bg-surface-hover);
+    border: 1px solid var(--border);
+}
 
-/* ============================================
-   RESPONSIVE
-============================================ */
+.factor-card .factor-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    background: var(--accent-light);
+    border: 1px solid var(--accent-border);
+    color: var(--accent);
+    font-size: 13px;
+    flex-shrink: 0;
+}
 
-@media (max-width: 1000px) {
+.factor-card div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
 
+.factor-card strong {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.factor-card span {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   RESPONSIVE ADD SONG
+   ========================================================================== */
+
+@media (max-width: 900px) {
     .add-song-container {
         grid-template-columns: 1fr;
     }
-
-    .info-card {
-        max-width: none;
-    }
 }
-
-
-@media (max-width: 700px) {
-
-    .add-song-header {
-        padding-top: 25px;
-    }
-
-    .add-song-header h1 {
-        font-size: 38px;
-    }
-
-    .form-card,
-    .info-card {
-        padding: 22px;
-    }
-
-}
-
 
 @media (max-width: 600px) {
-
-    .add-song-header h1 {
-        font-size: 34px;
+    .form-grid {
+        grid-template-columns: 1fr;
     }
 
     .form-card,
     .info-card {
-        padding: 18px;
+        padding: 20px;
     }
-
-    .audio-upload {
-        padding: 13px;
-    }
-
-    .add-song-button {
-        padding: 14px 10px;
-    }
-
 }
