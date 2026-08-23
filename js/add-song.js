@@ -17,6 +17,9 @@ const songTitle =
 const songArtist =
     document.getElementById("songArtist");
 
+const artistCountHint =
+    document.getElementById("artistCountHint");
+
 const songMood =
     document.getElementById("songMood");
 
@@ -37,6 +40,116 @@ const fileName =
 
 const formMessage =
     document.getElementById("formMessage");
+
+
+// ============================================
+// POPULATE ARTIST DROPDOWN
+// ============================================
+
+async function populateArtistDropdown() {
+    if (!songArtist) return;
+
+    try {
+        let songs = [];
+        if (typeof getAllSongs === "function") {
+            songs = await getAllSongs();
+        } else if (typeof getSongsFromStorage === "function") {
+            songs = await getSongsFromStorage();
+        }
+
+        const artistCounts = {};
+
+        // Custom profiles from Add Artist
+        if (typeof getAllArtistProfiles === "function") {
+            const profiles = getAllArtistProfiles();
+            profiles.forEach(function(p) {
+                const name = (p.name || "").trim();
+                if (name) {
+                    artistCounts[name] = 0;
+                }
+            });
+        }
+
+        songs.forEach(function(song) {
+            const artist = (song.artist || "").trim();
+            if (artist) {
+                artistCounts[artist] = (artistCounts[artist] || 0) + 1;
+            }
+        });
+
+        const sortedArtists = Object.keys(artistCounts).sort();
+
+        songArtist.innerHTML = "";
+
+        const defaultOption = document.createElement("option");
+        defaultOption.value = "";
+        defaultOption.textContent = sortedArtists.length > 0 
+            ? "Select artist..." 
+            : "No artists yet";
+        songArtist.appendChild(defaultOption);
+
+        sortedArtists.forEach(function(artist) {
+            const option = document.createElement("option");
+            option.value = artist;
+            option.textContent = `${artist} (${artistCounts[artist]} track${artistCounts[artist] === 1 ? "" : "s"})`;
+            songArtist.appendChild(option);
+        });
+
+        const newOption = document.createElement("option");
+        newOption.value = "__NEW__";
+        newOption.textContent = "＋ Add New Artist...";
+        songArtist.appendChild(newOption);
+
+        if (artistCountHint) {
+            artistCountHint.textContent = sortedArtists.length > 0
+                ? `${sortedArtists.length} in catalog`
+                : "";
+        }
+    } catch (e) {
+        console.warn("Could not load artists for dropdown:", e);
+    }
+}
+
+populateArtistDropdown();
+
+let previousArtistValue = "";
+
+if (songArtist) {
+    songArtist.addEventListener("focus", function() {
+        if (songArtist.value !== "__NEW__") {
+            previousArtistValue = songArtist.value;
+        }
+    });
+
+    songArtist.addEventListener("change", function () {
+        if (songArtist.value === "__NEW__") {
+            const newName = prompt("Enter new artist name:");
+            if (newName && newName.trim()) {
+                const trimmedName = newName.trim();
+                
+                // Check if already in options
+                let existingOpt = Array.from(songArtist.options).find(function(o) {
+                    return o.value.toLowerCase() === trimmedName.toLowerCase();
+                });
+                
+                if (existingOpt) {
+                    songArtist.value = existingOpt.value;
+                } else {
+                    const customOpt = document.createElement("option");
+                    customOpt.value = trimmedName;
+                    customOpt.textContent = `★ ${trimmedName} (New)`;
+                    customOpt.selected = true;
+                    songArtist.insertBefore(customOpt, songArtist.lastElementChild);
+                    songArtist.value = trimmedName;
+                }
+            } else {
+                songArtist.value = previousArtistValue || "";
+            }
+        } else {
+            previousArtistValue = songArtist.value;
+        }
+    });
+}
 
 
 // ============================================
