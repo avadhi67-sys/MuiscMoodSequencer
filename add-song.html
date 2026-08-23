@@ -2,710 +2,243 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>Add Song | SonicFlow</title>
-
-    <!-- GLOBAL CSS -->
-    <link
-        rel="stylesheet"
-        href="css/style.css"
-    >
-
-    <!-- ADD SONG CSS -->
-    <link
-        rel="stylesheet"
-        href="css/add-song.css"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Track • SonicFlow</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/add-song.css">
+    <script src="js/theme.js"></script>
 </head>
-
 
 <body>
 
+<!-- Background Subtle Mesh -->
+<div class="background-orb orb-one"></div>
+<div class="background-orb orb-two"></div>
+<div class="background-orb orb-three"></div>
 
-<!-- ============================================
-     SIDEBAR
-============================================ -->
-
+<!-- SIDEBAR -->
 <aside class="sidebar">
-
-
-    <!-- BRAND -->
-
     <div class="brand">
-
-        <div class="brand-icon">
-            ♪
-        </div>
-
+        <div class="brand-icon">♪</div>
         <div>
-
-            <h2>
-                Sonic<span>Flow</span>
-            </h2>
-
-            <small>
-                MUSIC INTELLIGENCE
-            </small>
-
+            <h2>Sonic<span>Flow</span></h2>
+            <small>Music Intelligence</small>
         </div>
-
     </div>
 
+    <nav class="navigation">
+        <p class="nav-title">Menu</p>
+        <a href="index.html" class="nav-item">
+            <span>⌂</span> Home
+        </a>
+        <a href="search.html" class="nav-item">
+            <span>⌕</span> Search
+        </a>
 
-    <!-- NAVIGATION -->
+        <p class="nav-title music-title">Your Music</p>
+        <a href="library.html" class="nav-item">
+            <span>♫</span> My Library
+        </a>
+        <a href="artists.html" class="nav-item">
+            <span>🎤</span> My Artists
+        </a>
+        <a href="add-song.html" class="nav-item active">
+            <span>＋</span> Add Song
+        </a>
+        <a href="add-artist.html" class="nav-item">
+            <span>＋</span> Add Artist
+        </a>
 
-    <p class="nav-title">
-        MENU
-    </p>
+        <p class="nav-title music-title">SonicFlow</p>
+        <a href="sequencer.html" class="nav-item">
+            <span>✦</span> Mood Flow
+        </a>
+    </nav>
 
-
-    <a
-        href="index.html"
-        class="nav-item"
-    >
-
-        <span>⌂</span>
-
-        Home
-
-    </a>
-
-
-    <a
-        href="search.html"
-        class="nav-item"
-    >
-
-        <span>⌕</span>
-
-        Search
-
-    </a>
-
-
-    <p class="nav-title music-title">
-        YOUR MUSIC
-    </p>
-
-
-    <a
-        href="library.html"
-        class="nav-item"
-    >
-
-        <span>♫</span>
-
-        My Library
-
-    </a>
-
-
-    <a
-        href="add-song.html"
-        class="nav-item active"
-    >
-
-        <span>＋</span>
-
-        Add Song
-
-    </a>
-
-
-    <p class="nav-title music-title">
-        SONICFLOW
-    </p>
-
-
-    <a
-        href="sequencer.html"
-        class="nav-item"
-    >
-
-        <span>✦</span>
-
-        Mood Flow
-
-    </a>
-
-
-    <!-- ACCOUNT -->
-
-    <div class="sidebar-account">
-
-        <div
-            class="sidebar-avatar"
-            id="sidebarAvatar"
-        >
-            A
+    <div class="sidebar-bottom">
+        <div class="sidebar-player" onclick="window.location.href='sequencer.html'">
+            <div class="mini-cover">♪</div>
+            <div class="mini-info">
+                <strong>Your Flow</strong>
+                <span>Ready to sequence</span>
+            </div>
+            <div class="mini-wave">≋</div>
         </div>
 
-
-        <div class="sidebar-account-info">
-
-            <strong id="sidebarName">
-                User
-            </strong>
-
-            <span>
-                Your account
-            </span>
-
+        <div class="sidebar-account">
+            <div class="account-avatar" id="sidebarAvatar">U</div>
+            <div class="account-details">
+                <strong id="sidebarName">User</strong>
+                <span>Account</span>
+            </div>
+            <button id="logoutButton" class="logout-button" title="Log out">Logout</button>
         </div>
-
-
-        <button
-            id="logoutButton"
-            class="logout-button"
-        >
-            Logout
-        </button>
-
     </div>
-
-
-    <!-- MINI PLAYER -->
-
-    <div class="sidebar-player">
-
-        <div class="mini-cover">
-            ♪
-        </div>
-
-
-        <div class="mini-info">
-
-            <strong>
-                Your Flow
-            </strong>
-
-            <span>
-                Ready to play
-            </span>
-
-        </div>
-
-
-        <div class="mini-wave">
-            ≋
-        </div>
-
-    </div>
-
 </aside>
 
-
-
-<!-- ============================================
-     MAIN CONTENT
-============================================ -->
-
+<!-- MAIN CONTENT -->
 <main class="main-content">
-
-
-    <!-- TOP BAR -->
-
     <header class="topbar">
-
+        <div class="mobile-brand">
+            Sonic<span>Flow</span>
+        </div>
         <div class="search-box">
-
-            <span>
-                ⌕
-            </span>
-
-            <input
-                type="text"
-                placeholder="Search your music..."
-            >
-
+            <span>⌕</span>
+            <input type="text" placeholder="Search your music...">
         </div>
-
-
-        <div
-            class="profile-avatar"
-            id="profileAvatar"
-        >
-            A
+        <div class="topbar-actions">
+            <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle dark and light mode">
+                <span class="theme-icon">🌙</span>
+                <span class="theme-label">Dark</span>
+            </button>
+            <div class="profile">
+                <div class="profile-avatar" id="profileAvatar">U</div>
+            </div>
         </div>
-
     </header>
 
-
-
-    <!-- ========================================
-         ADD SONG HEADER
-    ========================================= -->
-
+    <!-- HEADER -->
     <section class="add-song-header">
-
-        <p class="section-label">
-            YOUR MUSIC • ADD TRACK
-        </p>
-
-
-        <h1>
-            Add a song to
-            <span>your flow.</span>
-        </h1>
-
-
+        <span class="section-tag">CATALOG INGESTION</span>
+        <h1>Add a track to <span>your library.</span></h1>
         <p class="section-description">
-
-            Add your music and tell SonicFlow
-            about its mood, energy and tempo.
-            We'll use these factors to create
-            smoother transitions.
-
+            Tag your song with acoustic dimensions. SonicFlow uses mood resonance, energy level, and BPM to sequence transitions.
         </p>
-
     </section>
 
-
-
-    <!-- ========================================
-         ADD SONG FORM
-    ========================================= -->
-
+    <!-- FORM & INFO CONTAINER -->
     <section class="add-song-container">
-
-
+        <!-- Main Form Card -->
         <div class="form-card">
-
-
             <div class="form-header">
-
-                <div class="form-icon">
-                    ♫
-                </div>
-
-
+                <div class="form-icon">♫</div>
                 <div>
-
-                    <h2>
-                        Song Information
-                    </h2>
-
-                    <p>
-                        Tell us about this track
-                    </p>
-
+                    <h2>Track Information</h2>
+                    <p>Enter the musical attributes for this track</p>
                 </div>
-
             </div>
 
+            <form id="addSongForm" enctype="multipart/form-data">
+                <div class="form-grid">
+                    <!-- Title -->
+                    <div class="form-group">
+                        <label for="songTitle">Track Title</label>
+                        <input type="text" id="songTitle" required>
+                    </div>
 
-
-            <form
-                id="addSongForm"
-                enctype="multipart/form-data"
-            >
-
-
-                <!-- SONG TITLE -->
-
-                <div class="form-group">
-
-                    <label for="songTitle">
-                        Song title
-                    </label>
-
-                    <input
-                        type="text"
-                        id="songTitle"
-                        placeholder="e.g. Tum Ho"
-                        required
-                    >
-
+                    <!-- Artist -->
+                    <div class="form-group">
+                        <div class="label-row">
+                            <label for="songArtist">Artist / Creator</label>
+                            <span class="field-hint" id="artistCountHint"></span>
+                        </div>
+                        <select id="songArtist" required>
+                            <option value="">Select artist...</option>
+                        </select>
+                    </div>
                 </div>
 
+                <div class="form-grid">
+                    <!-- Mood -->
+                    <div class="form-group">
+                        <label for="songMood">Mood Vibe</label>
+                        <select id="songMood" required>
+                            <option value="">Select mood...</option>
+                            <option value="Calm">Calm</option>
+                            <option value="Dreamy">Dreamy</option>
+                            <option value="Romantic">Romantic</option>
+                            <option value="Happy">Happy</option>
+                            <option value="Energetic">Energetic</option>
+                            <option value="Emotional">Emotional</option>
+                            <option value="Melancholic">Melancholic</option>
+                            <option value="Intense">Intense</option>
+                        </select>
+                    </div>
 
-
-                <!-- ARTIST -->
-
-                <div class="form-group">
-
-                    <label for="songArtist">
-                        Artist
-                    </label>
-
-                    <input
-                        type="text"
-                        id="songArtist"
-                        placeholder="e.g. Arijit Singh"
-                        required
-                    >
-
+                    <!-- BPM -->
+                    <div class="form-group">
+                        <label for="songTempo">Tempo (BPM)</label>
+                        <input type="number" id="songTempo" placeholder="e.g. 120" min="40" max="220" required>
+                    </div>
                 </div>
 
-
-
-                <!-- MOOD -->
-
+                <!-- Energy Slider -->
                 <div class="form-group">
-
-                    <label for="songMood">
-                        Mood
-                    </label>
-
-                    <select
-                        id="songMood"
-                        required
-                    >
-
-                        <option value="">
-                            Select mood
-                        </option>
-
-                        <option value="Calm">
-                            Calm
-                        </option>
-
-                        <option value="Dreamy">
-                            Dreamy
-                        </option>
-
-                        <option value="Romantic">
-                            Romantic
-                        </option>
-
-                        <option value="Happy">
-                            Happy
-                        </option>
-
-                        <option value="Energetic">
-                            Energetic
-                        </option>
-
-                        <option value="Emotional">
-                            Emotional
-                        </option>
-
-                        <option value="Melancholic">
-                            Melancholic
-                        </option>
-
-                        <option value="Intense">
-                            Intense
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-
-                <!-- ENERGY -->
-
-                <div class="form-group">
-
                     <div class="label-row">
-
-                        <label for="songEnergy">
-                            Energy
-                        </label>
-
-                        <span
-                            id="energyValue"
-                            class="range-value"
-                        >
-                            5
-                        </span>
-
+                        <label for="songEnergy">Energy Level</label>
+                        <span id="energyValue" class="range-value">5 / 10</span>
                     </div>
-
-
-                    <input
-                        type="range"
-                        id="songEnergy"
-                        min="1"
-                        max="10"
-                        value="5"
-                        step="1"
-                    >
-
-
+                    <input type="range" id="songEnergy" min="1" max="10" value="5" step="1">
                     <div class="range-labels">
-
-                        <span>
-                            Low
-                        </span>
-
-                        <span>
-                            Medium
-                        </span>
-
-                        <span>
-                            High
-                        </span>
-
+                        <span>1 (Ambient / Chill)</span>
+                        <span>5 (Moderate)</span>
+                        <span>10 (High Energy / Peak)</span>
                     </div>
-
                 </div>
 
-
-
-                <!-- BPM -->
-
+                <!-- Audio Upload Dropzone -->
                 <div class="form-group">
-
-                    <label for="songTempo">
-                        Tempo / BPM
-                    </label>
-
-                    <input
-                        type="number"
-                        id="songTempo"
-                        placeholder="e.g. 90"
-                        min="40"
-                        max="220"
-                        required
-                    >
-
-                    <small>
-                        Enter a value between 40 and 220 BPM.
-                    </small>
-
-                </div>
-
-
-
-                <!-- AUDIO -->
-
-                <div class="form-group">
-
-                    <label for="songAudio">
-                        Audio file
-                    </label>
-
-
-                    <label
-                        for="songAudio"
-                        class="audio-upload"
-                    >
-
-                        <div class="upload-icon">
-                            ↑
+                    <label>Audio File</label>
+                    <label for="songAudio" class="audio-upload">
+                        <div class="upload-icon">↑</div>
+                        <div class="upload-text">
+                            <strong id="fileName">Click to select an audio file</strong>
+                            <span>Supports MP3, WAV, OGG, M4A</span>
                         </div>
-
-
-                        <div>
-
-                            <strong id="fileName">
-                                Choose an audio file
-                            </strong>
-
-                            <span>
-                                MP3, WAV or OGG
-                            </span>
-
-                        </div>
-
                     </label>
-
-
-                    <input
-                        type="file"
-                        id="songAudio"
-                        accept="audio/*"
-                        required
-                        hidden
-                    >
-
+                    <input type="file" id="songAudio" accept="audio/*" required hidden>
                 </div>
 
+                <!-- Status Feedback -->
+                <div id="formMessage" class="form-message"></div>
 
-
-                <!-- STATUS -->
-
-                <div
-                    id="formMessage"
-                    class="form-message"
-                >
-                </div>
-
-
-
-                <!-- SUBMIT -->
-
-                <button
-                    type="submit"
-                    class="add-song-button"
-                >
-
-                    <span>
-                        ✦
-                    </span>
-
-                    Add Song to My Flow
-
-                    <span>
-                        →
-                    </span>
-
+                <!-- Submit Button -->
+                <button type="submit" class="add-song-button">
+                    <span>✦</span> Add Track to SonicFlow
                 </button>
-
-
             </form>
-
         </div>
 
-
-
-        <!-- ====================================
-             RIGHT INFO CARD
-        ==================================== -->
-
+        <!-- Info Helper Card -->
         <div class="info-card">
+            <span class="card-tag">FLOW ENGINE TIPS</span>
+            <h2>How It Works</h2>
+            <p>Accurate metadata creates cleaner transition paths between songs in your sequence.</p>
 
-
-            <p class="section-label">
-                HOW IT WORKS
-            </p>
-
-
-            <h2>
-                Give SonicFlow
-                <span>the details.</span>
-            </h2>
-
-
-            <p>
-                Every song you add becomes part
-                of your personal music library.
-            </p>
-
-
-
-            <!-- FACTOR 1 -->
-
-            <div class="factor-card">
-
-                <div class="factor-icon">
-                    ✦
+            <div class="factor-guide">
+                <div class="factor-card">
+                    <div class="factor-icon">✦</div>
+                    <div>
+                        <strong>Mood Resonance</strong>
+                        <span>Prevents emotional jarring between sequential songs.</span>
+                    </div>
                 </div>
 
-
-                <div>
-
-                    <strong>
-                        Mood
-                    </strong>
-
-                    <span>
-                        Keeps the emotional journey
-                        connected.
-                    </span>
-
+                <div class="factor-card">
+                    <div class="factor-icon">⚡</div>
+                    <div>
+                        <strong>Energy Dynamics</strong>
+                        <span>Controls the build-up or cool-down curves of your playlist.</span>
+                    </div>
                 </div>
 
+                <div class="factor-card">
+                    <div class="factor-icon">↗</div>
+                    <div>
+                        <strong>Tempo Continuity</strong>
+                        <span>Matches rhythm signatures for natural transitions.</span>
+                    </div>
+                </div>
             </div>
-
-
-
-            <!-- FACTOR 2 -->
-
-            <div class="factor-card">
-
-                <div class="factor-icon">
-                    ⚡
-                </div>
-
-
-                <div>
-
-                    <strong>
-                        Energy
-                    </strong>
-
-                    <span>
-                        Prevents sudden changes
-                        in intensity.
-                    </span>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- FACTOR 3 -->
-
-            <div class="factor-card">
-
-                <div class="factor-icon">
-                    ↗
-                </div>
-
-
-                <div>
-
-                    <strong>
-                        Tempo
-                    </strong>
-
-                    <span>
-                        Helps SonicFlow create
-                        natural BPM transitions.
-                    </span>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- TIP -->
-
-            <div class="tip-card">
-
-                <span>
-                    💡
-                </span>
-
-                <p>
-
-                    <strong>
-                        Tip
-                    </strong>
-
-                    For better transitions,
-                    enter the closest BPM and
-                    energy level for your song.
-
-                </p>
-
-            </div>
-
-
         </div>
-
-
     </section>
-
-
 </main>
 
-
-
-<!-- ============================================
-     JAVASCRIPT
-============================================ -->
-
+<!-- Scripts -->
 <script src="js/storage.js"></script>
-
+<script src="js/songs.js"></script>
 <script src="js/app.js"></script>
-
 <script src="js/add-song.js"></script>
-
-
 </body>
-
 </html>
