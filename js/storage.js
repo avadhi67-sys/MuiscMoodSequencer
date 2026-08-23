@@ -654,6 +654,70 @@ async function testStorage() {
 
 
 // ============================================
+// ARTIST PROFILES STORAGE
+// ============================================
+
+const ARTISTS_STORAGE_KEY = "sonicflow_custom_artists";
+
+function getAllArtistProfiles() {
+    try {
+        const data = localStorage.getItem(ARTISTS_STORAGE_KEY);
+        return data ? JSON.parse(data) : [];
+    } catch (e) {
+        console.error("Failed to load artists from storage:", e);
+        return [];
+    }
+}
+
+function saveArtistProfile(artist) {
+    try {
+        const artists = getAllArtistProfiles();
+        const trimmedName = (artist.name || "").trim();
+        if (!trimmedName) return false;
+
+        const existingIndex = artists.findIndex(function(a) {
+            return a.name.toLowerCase() === trimmedName.toLowerCase();
+        });
+
+        const newProfile = {
+            id: artist.id || `artist_${Date.now()}`,
+            name: trimmedName,
+            mood: artist.mood || "",
+            bio: artist.bio || "",
+            image: artist.image || "",
+            updatedAt: Date.now()
+        };
+
+        if (existingIndex >= 0) {
+            artists[existingIndex] = { ...artists[existingIndex], ...newProfile };
+        } else {
+            artists.push(newProfile);
+        }
+
+        localStorage.setItem(ARTISTS_STORAGE_KEY, JSON.stringify(artists));
+        console.log("🎤 Artist profile saved:", trimmedName);
+        return newProfile;
+    } catch (e) {
+        console.error("Failed to save artist profile:", e);
+        return false;
+    }
+}
+
+function deleteArtistProfile(artistName) {
+    try {
+        const artists = getAllArtistProfiles();
+        const filtered = artists.filter(function(a) {
+            return a.name.toLowerCase() !== artistName.toLowerCase();
+        });
+        localStorage.setItem(ARTISTS_STORAGE_KEY, JSON.stringify(filtered));
+        return true;
+    } catch (e) {
+        console.error("Failed to delete artist profile:", e);
+        return false;
+    }
+}
+
+// ============================================
 // READY
 // ============================================
 

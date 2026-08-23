@@ -940,7 +940,10 @@ function createMoodFlow(
 // RENDER FLOW
 // ============================================
 
+let latestFlowData = [];
+
 function renderFlow(flow) {
+    latestFlowData = flow || [];
 
     if (!generatedFlow) {
 
@@ -1436,6 +1439,223 @@ function escapeHTML(value) {
 
 }
 
+
+// ============================================
+// MOOD ANALYSIS GRAPH CONTROLLER
+// ============================================
+
+const openMoodGraphButton = document.getElementById("openMoodGraphButton");
+const viewGraphHeaderBtn = document.getElementById("viewGraphHeaderBtn");
+const moodGraphModalOverlay = document.getElementById("moodGraphModalOverlay");
+const moodGraphCloseBtn = document.getElementById("moodGraphCloseBtn");
+const graphMetricTracks = document.getElementById("graphMetricTracks");
+const graphMetricEnergy = document.getElementById("graphMetricEnergy");
+const graphMetricBPM = document.getElementById("graphMetricBPM");
+const graphMetricMatch = document.getElementById("graphMetricMatch");
+const graphSvgContainer = document.getElementById("graphSvgContainer");
+const moodDistributionList = document.getElementById("moodDistributionList");
+const graphMoodSubtitle = document.getElementById("graphMoodSubtitle");
+
+function openMoodGraph() {
+    if (!moodGraphModalOverlay) return;
+
+    // Use current flow if generated, otherwise available songs
+    const isFlowActive = latestFlowData && latestFlowData.length > 0;
+    const songList = isFlowActive
+        ? latestFlowData.map(item => item.song)
+        : (availableSongs || []);
+
+    if (graphMoodSubtitle) {
+        graphMoodSubtitle.textContent = isFlowActive ? "Across active sequenced flow" : "Across full music catalog";
+    }
+
+    if (songList.length === 0) {
+        alert("Add songs to your library or generate a mood flow to view the analysis graph.");
+        return;
+    }
+
+    // 1. Calculate Metrics
+    let totalEnergy = 0;
+    let totalBPM = 0;
+    const moodCounts = {};
+
+    songList.forEach(s => {
+        totalEnergy += Number(s.energy) || 5;
+        totalBPM += Number(s.tempo) || 120;
+        const moodName = s.mood || "Unknown";
+        moodCounts[moodName] = (moodCounts[moodName] || 0) + 1;
+    });
+
+    const avgEnergy = (totalEnergy / songList.length).toFixed(1);
+    const avgBPM = Math.round(totalBPM / songList.length);
+
+    let avgMatchScore = 96;
+    if (isFlowActive) {
+        let totalScore = 0;
+        latestFlowData.forEach(item => {
+            totalScore += (Number(item.score) || 0.9);
+        });
+        avgMatchScore = Math.round((totalScore / latestFlowData.length) * 100);
+    }
+
+    if (graphMetricTracks) graphMetricTracks.textContent = songList.length;
+    if (graphMetricEnergy) graphMetricEnergy.textContent = `${avgEnergy} / 10`;
+    if (graphMetricBPM) graphMetricBPM.textContent = `${avgBPM} BPM`;
+    if (graphMetricMatch) graphMetricMatch.textContent = `${avgMatchScore}%`;
+
+    // 2. Render SVG Acoustic Trajectory Curve
+    renderAcousticTrajectoryGraph(songList);
+
+    // 3. Render Mood Distribution Breakdown
+    renderMoodDistribution(moodCounts, songList.length);
+
+    moodGraphModalOverlay.style.display = "flex";
+}
+
+function closeMoodGraph() {
+    if (moodGraphModalOverlay) {
+        moodGraphModalOverlay.style.display = "none";
+    }
+}
+
+function renderAcousticTrajectoryGraph(songList) {
+    if (!graphSvgContainer) return;
+
+    const width = graphSvgContainer.clientWidth || 720;
+    const height = 220;
+    const paddingLeft = 55;
+    const paddingRight = 40;
+    const paddingTop = 25;
+    const paddingBottom = 35;
+
+    const plotWidth = width - paddingLeft - paddingRight;
+    const plotHeight = height - paddingTop - paddingBottom;
+
+    const pointsCount = songList.length;
+    const stepX = pointsCount > 1 ? plotWidth / (pointsCount - 1) : plotWidth / 2;
+
+    let minBPM = Infinity;
+    let maxBPM = -Infinity;
+    songList.forEach(s => {
+        const bpm = Number(s.tempo) || 120;
+        if (bpm < minBPM) minBPM = bpm;
+        if (bpm > maxBPM) maxBPM = bpm;
+    });
+    if (minBPM === maxBPM) {
+        minBPM = Math.max(40, minBPM - 20);
+        maxBPM = maxBPM + 20;
+    }
+
+    const energyPoints = [];
+    const tempoPoints = [];
+
+    songList.forEach((song, i) => {
+        const x = paddingLeft + (pointsCount > 1 ? i * stepX : plotWidth / 2);
+
+        // Energy Y (1 at bottom, 10 at top)
+        const energyVal = Math.max(1, Math.min(10, Number(song.energy) || 5));
+        const energyY = paddingTop + plotHeight - ((energyVal - 1) / 9) * plotHeight;
+        energyPoints.push({ x, y: energyY, val: energyVal, song });
+
+        // Tempo Y
+        const tempoVal = Number(song.tempo) || 120;
+        const tempoRatio = Math.max(0, Math.min(1, (tempoVal - minBPM) / (maxBPM - minBPM || 1)));
+        const tempoY = paddingTop + plotHeight - (tempoRatio * plotHeight);
+        tempoPoints.push({ x, y: tempoY, val: tempoVal, song });
+    });
+
+    const energyPathD = energyPoints.map((p, i) => (i === 0 ? `M ${p.x} ${p.y}` : `L ${p.x} ${p.y}`)).join(" ");
+    const tempoPathD = tempoPoints.map((p, i) => (i === 0 ? `M ${p.x} ${p.y}` : `L ${p.x} ${p.y}`)).join(" ");
+
+    const gridY1 = paddingTop;
+    const gridY2 = paddingTop + plotHeight / 2;
+    const gridY3 = paddingTop + plotHeight;
+
+    let svgHTML = `
+        <svg viewBox="0 0 ${width} ${height}" preserveAspectRatio="none" style="width: 100%; height: 100%;">
+            <!-- Grid Lines -->
+            <line x1="${paddingLeft}" y1="${gridY1}" x2="${width - paddingRight}" y2="${gridY1}" stroke="var(--border)" stroke-dasharray="3,3" stroke-width="1" />
+            <line x1="${paddingLeft}" y1="${gridY2}" x2="${width - paddingRight}" y2="${gridY2}" stroke="var(--border)" stroke-dasharray="3,3" stroke-width="1" />
+            <line x1="${paddingLeft}" y1="${gridY3}" x2="${width - paddingRight}" y2="${gridY3}" stroke="var(--border)" stroke-dasharray="3,3" stroke-width="1" />
+
+            <!-- Y Axis Labels -->
+            <text x="${paddingLeft - 8}" y="${gridY1 + 4}" font-size="10" font-weight="700" fill="var(--text-dim)" text-anchor="end">10 (Peak)</text>
+            <text x="${paddingLeft - 8}" y="${gridY2 + 4}" font-size="10" font-weight="700" fill="var(--text-dim)" text-anchor="end">5</text>
+            <text x="${paddingLeft - 8}" y="${gridY3 + 4}" font-size="10" font-weight="700" fill="var(--text-dim)" text-anchor="end">1 (Chill)</text>
+
+            <!-- Tempo Path -->
+            <path d="${tempoPathD}" fill="none" stroke="#BFBFDB" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" />
+
+            <!-- Energy Path -->
+            <path d="${energyPathD}" fill="none" stroke="#AD525E" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" />
+
+            <!-- Data Nodes & Tooltips -->
+            ${tempoPoints.map(p => `
+                <circle cx="${p.x}" cy="${p.y}" r="4.5" fill="#BFBFDB" stroke="var(--bg-surface)" stroke-width="1.5" style="cursor: pointer;">
+                    <title>${escapeHTML(p.song.title)} • ${p.val} BPM</title>
+                </circle>
+            `).join("")}
+
+            ${energyPoints.map((p, idx) => `
+                <g style="cursor: pointer;">
+                    <circle cx="${p.x}" cy="${p.y}" r="6" fill="#AD525E" stroke="var(--bg-surface)" stroke-width="2" />
+                    <text x="${p.x}" y="${height - 10}" font-size="10" font-weight="800" fill="var(--text-dim)" text-anchor="middle">#${idx + 1}</text>
+                    <title>${escapeHTML(p.song.title)} (${escapeHTML(p.song.artist || 'Unknown')})&#10;Mood: ${p.song.mood || 'N/A'}&#10;Energy: ${p.val}/10&#10;Tempo: ${p.song.tempo || 0} BPM</title>
+                </g>
+            `).join("")}
+        </svg>
+    `;
+
+    graphSvgContainer.innerHTML = svgHTML;
+}
+
+function renderMoodDistribution(moodCounts, total) {
+    if (!moodDistributionList) return;
+    moodDistributionList.innerHTML = "";
+
+    const entries = Object.entries(moodCounts).sort((a, b) => b[1] - a[1]);
+
+    entries.forEach(([mood, count]) => {
+        const pct = Math.round((count / total) * 100);
+        const row = document.createElement("div");
+        row.className = "mood-dist-row";
+        row.innerHTML = `
+            <div class="mood-dist-label">${escapeHTML(mood)}</div>
+            <div class="mood-dist-bar-track">
+                <div class="mood-dist-bar-fill" style="width: ${pct}%;"></div>
+            </div>
+            <div class="mood-dist-count">${pct}%</div>
+        `;
+        moodDistributionList.appendChild(row);
+    });
+}
+
+// Bind graph modal open/close events
+if (openMoodGraphButton) {
+    openMoodGraphButton.addEventListener("click", openMoodGraph);
+}
+
+if (viewGraphHeaderBtn) {
+    viewGraphHeaderBtn.addEventListener("click", openMoodGraph);
+}
+
+if (moodGraphCloseBtn) {
+    moodGraphCloseBtn.addEventListener("click", closeMoodGraph);
+}
+
+if (moodGraphModalOverlay) {
+    moodGraphModalOverlay.addEventListener("click", function(e) {
+        if (e.target === moodGraphModalOverlay) {
+            closeMoodGraph();
+        }
+    });
+}
+
+document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") {
+        closeMoodGraph();
+    }
+});
 
 // ============================================
 // INITIALIZE

@@ -179,10 +179,14 @@ function playSong(song, songs = null) {
     // VOLUME
     // ========================================
 
-    currentAudio.volume =
-        playerVolume
-            ? Number(playerVolume.value)
-            : 1;
+    let initialVol = 1;
+    if (playerVolume) {
+        let val = Number(playerVolume.value);
+        if (val > 1) val = val / 100;
+        initialVol = Math.max(0, Math.min(1, isNaN(val) ? 1 : val));
+    }
+
+    currentAudio.volume = initialVol;
 
 
     // ========================================
@@ -598,9 +602,9 @@ function changeVolume(value) {
 
     }
 
-
-    currentAudio.volume =
-        Number(value);
+    let val = Number(value);
+    if (val > 1) val = val / 100;
+    currentAudio.volume = Math.max(0, Math.min(1, isNaN(val) ? 1 : val));
 
 }
 
