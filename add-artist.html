@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Artist • SonicFlow</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/add-song.css">
+    <link rel="stylesheet" href="css/artists.css">
+    <script src="js/theme.js"></script>
+</head>
+
+<body>
+
+<!-- Background Subtle Mesh -->
+<div class="background-orb orb-one"></div>
+<div class="background-orb orb-two"></div>
+<div class="background-orb orb-three"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+    <div class="brand">
+        <div class="brand-icon">♪</div>
+        <div>
+            <h2>Sonic<span>Flow</span></h2>
+            <small>Music Intelligence</small>
+        </div>
+    </div>
+
+    <nav class="navigation">
+        <p class="nav-title">Menu</p>
+        <a href="index.html" class="nav-item">
+            <span>⌂</span> Home
+        </a>
+        <a href="search.html" class="nav-item">
+            <span>⌕</span> Search
+        </a>
+
+        <p class="nav-title music-title">Your Music</p>
+        <a href="library.html" class="nav-item">
+            <span>♫</span> My Library
+        </a>
+        <a href="artists.html" class="nav-item">
+            <span>🎤</span> My Artists
+        </a>
+        <a href="add-song.html" class="nav-item">
+            <span>＋</span> Add Song
+        </a>
+        <a href="add-artist.html" class="nav-item active">
+            <span>＋</span> Add Artist
+        </a>
+
+        <p class="nav-title music-title">SonicFlow</p>
+        <a href="sequencer.html" class="nav-item">
+            <span>✦</span> Mood Flow
+        </a>
+    </nav>
+
+    <div class="sidebar-bottom">
+        <div class="sidebar-player" onclick="window.location.href='sequencer.html'">
+            <div class="mini-cover">♪</div>
+            <div class="mini-info">
+                <strong>Your Flow</strong>
+                <span>Ready to sequence</span>
+            </div>
+            <div class="mini-wave">≋</div>
+        </div>
+
+        <div class="sidebar-account">
+            <div class="account-avatar" id="sidebarAvatar">U</div>
+            <div class="account-details">
+                <strong id="sidebarName">User</strong>
+                <span>Account</span>
+            </div>
+            <button id="logoutButton" class="logout-button" title="Log out">Logout</button>
+        </div>
+    </div>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+    <header class="topbar">
+        <div class="mobile-brand">
+            Sonic<span>Flow</span>
+        </div>
+        <div class="search-box">
+            <span>⌕</span>
+            <input type="text" placeholder="Search your music...">
+        </div>
+        <div class="topbar-actions">
+            <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle dark and light mode">
+                <span class="theme-icon">🌙</span>
+                <span class="theme-label">Dark</span>
+            </button>
+            <div class="profile">
+                <div class="profile-avatar" id="profileAvatar">U</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HEADER -->
+    <section class="add-song-header">
+        <span class="section-tag">CREATOR REGISTRY</span>
+        <h1>Add an artist to <span>your collection.</span></h1>
+        <p class="section-description">
+            Register musical creators with custom profile artwork and signature mood profiles.
+        </p>
+    </section>
+
+    <!-- FORM & INFO CONTAINER -->
+    <section class="add-song-container">
+        <!-- Main Form Card -->
+        <div class="form-card">
+            <div class="form-header">
+                <div class="form-icon">🎤</div>
+                <div>
+                    <h2>Artist Profile Details</h2>
+                    <p>Enter the creator information and upload avatar artwork</p>
+                </div>
+            </div>
+
+            <form id="addArtistForm">
+                <!-- Artist Name -->
+                <div class="form-group">
+                    <label for="artistNameInput">Artist Name</label>
+                    <input type="text" id="artistNameInput" required>
+                </div>
+
+                <!-- Bio / Description -->
+                <div class="form-group">
+                    <label for="artistBio">Artist Bio & Musical Style (Optional)</label>
+                    <input type="text" id="artistBio">
+                </div>
+
+                <!-- Artist Profile Image Upload -->
+                <div class="form-group">
+                    <label>Artist Profile Image (Card Artwork)</label>
+                    <div class="artist-image-preview-container">
+                        <div class="artist-image-preview" id="artistAvatarPreview">
+                            <span>🎤</span>
+                        </div>
+                        <label for="artistImageFile" class="audio-upload" style="flex: 1; margin: 0; padding: 14px 18px;">
+                            <div class="upload-icon">📷</div>
+                            <div class="upload-text">
+                                <strong id="artistImageName">Click to choose artist image</strong>
+                                <span>Supports JPG, PNG, WEBP, GIF</span>
+                            </div>
+                            <input type="file" id="artistImageFile" accept="image/*" style="display: none;">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="add-song-button" id="submitArtistBtn">
+                    <span>＋</span> Save Artist to Catalog
+                </button>
+
+                <!-- Status Message -->
+                <div id="artistFormMessage" class="form-message" style="display: none;"></div>
+            </form>
+        </div>
+
+        <!-- Info / Feature Guide Card -->
+        <div class="info-card">
+            <div class="info-header">
+                <h2>Artist Intelligence</h2>
+                <p>How creator profiles integrate with SonicFlow</p>
+            </div>
+
+            <div class="factor-guide">
+                <div class="factor-card">
+                    <div class="factor-icon">🖼️</div>
+                    <div>
+                        <strong>Custom Card Artwork</strong>
+                        <span>Your uploaded image renders directly inside the discography card and track drawers.</span>
+                    </div>
+                </div>
+
+                <div class="factor-card">
+                    <div class="factor-icon">♫</div>
+                    <div>
+                        <strong>Automatic Track Linking</strong>
+                        <span>Tracks imported with this artist's name will automatically link to this profile.</span>
+                    </div>
+                </div>
+
+                <div class="factor-card">
+                    <div class="factor-icon">✦</div>
+                    <div>
+                        <strong>Mood Alignment</strong>
+                        <span>SonicFlow sequences playlist paths by factoring in the creator's harmonic signatures.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Scripts -->
+<script src="js/storage.js"></script>
+<script src="js/songs.js"></script>
+<script src="js/app.js"></script>
+<script src="js/add-artist.js"></script>
+</body>
+</html>
