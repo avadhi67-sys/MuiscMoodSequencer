@@ -4,6 +4,41 @@
 
 console.log("SonicFlow Auth Loaded");
 
+// URL Parameters
+const urlParams = new URLSearchParams(window.location.search);
+const redirectParam = urlParams.get("redirect");
+const msgParam = urlParams.get("msg");
+
+// Update switch links to preserve redirect param
+const authSwitchLinks = document.querySelectorAll(".auth-switch a");
+authSwitchLinks.forEach(function(link) {
+    if (redirectParam) {
+        const baseHref = link.getAttribute("href").split("?")[0];
+        link.setAttribute("href", `${baseHref}?redirect=${encodeURIComponent(redirectParam)}`);
+    }
+});
+
+// Show initial notice if user was redirected because authentication is required
+document.addEventListener("DOMContentLoaded", function() {
+    const loginMsg = document.getElementById("loginMessage");
+    const authMsg = document.getElementById("authMessage");
+
+    if (msgParam === "login_required" || redirectParam) {
+        if (loginMsg) {
+            showMessage(
+                loginMsg,
+                "✦ Please log in or sign up first to access this feature.",
+                "error"
+            );
+        } else if (authMsg) {
+            showMessage(
+                authMsg,
+                "✦ Please create an account or log in to access this feature.",
+                "error"
+            );
+        }
+    }
+});
 
 // ============================================
 // SIGNUP
@@ -167,26 +202,30 @@ if (signupForm) {
                 JSON.stringify(users)
             );
 
+            // Auto-login newly registered user
+            localStorage.setItem(
+                "sonicflow_current_user",
+                JSON.stringify(user)
+            );
+
 
             // SUCCESS
 
             showMessage(
                 message,
-                "Account created successfully ✦",
+                "Account created successfully ✦ Redirecting...",
                 "success"
             );
 
 
-            // GO TO LOGIN
+            // GO TO DESTINATION OR HOME
 
             setTimeout(
                 function() {
-
-                    window.location.href =
-                        "login.html";
-
+                    const destination = redirectParam ? decodeURIComponent(redirectParam) : "index.html";
+                    window.location.href = destination;
                 },
-                1000
+                900
             );
 
         }
@@ -291,14 +330,12 @@ if (loginForm) {
             );
 
 
-            // GO HOME
+            // GO TO DESTINATION OR HOME
 
             setTimeout(
                 function() {
-
-                    window.location.href =
-                        "index.html";
-
+                    const destination = redirectParam ? decodeURIComponent(redirectParam) : "index.html";
+                    window.location.href = destination;
                 },
                 800
             );
