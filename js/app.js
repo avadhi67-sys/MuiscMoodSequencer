@@ -134,27 +134,10 @@ function renderAuthUI() {
                 }
             }
         } else {
-            // Guest
+            // Guest - Hide sidebar account and do not show guest card in sidebar
             if (sidebarAccount) {
                 sidebarAccount.style.display = "none";
             }
-
-            const guestCard = document.createElement("div");
-            guestCard.className = "sidebar-guest";
-            guestCard.innerHTML = `
-                <div class="sidebar-guest-info">
-                    <div class="sidebar-guest-avatar">✦</div>
-                    <div class="sidebar-guest-text">
-                        <strong>Guest User</strong>
-                        <span>Sign in for full access</span>
-                    </div>
-                </div>
-                <div class="sidebar-guest-actions">
-                    <a href="login.html" class="sidebar-guest-btn sidebar-guest-login">Log In</a>
-                    <a href="signup.html" class="sidebar-guest-btn sidebar-guest-signup">Sign Up</a>
-                </div>
-            `;
-            sidebarBottom.appendChild(guestCard);
         }
     }
 }
@@ -207,23 +190,161 @@ if (!currentUser) {
 }
 
 // ============================================
-// TOPBAR SEARCH BAR HANDLER
+// SIDEBAR COLLAPSE / EXPAND TOGGLE
 // ============================================
 
-const searchInputs = document.querySelectorAll(".search-box input, #topbarSearch");
+function initSidebarToggle() {
+    const savedState = localStorage.getItem("sonicflow_sidebar_collapsed");
+    if (savedState === "true") {
+        document.body.classList.add("sidebar-collapsed");
+    }
 
-searchInputs.forEach(function(input) {
-    input.addEventListener("keydown", function(event) {
-        if (event.key === "Enter") {
-            const query = input.value.trim();
-            if (query !== "") {
-                const targetUrl = `search.html?q=${encodeURIComponent(query)}`;
-                if (!currentUser) {
-                    window.location.href = `login.html?redirect=${encodeURIComponent(targetUrl)}&msg=login_required`;
-                } else {
-                    window.location.href = targetUrl;
-                }
-            }
+    // Auto-inject button into any topbar if missing
+    const topbars = document.querySelectorAll(".topbar");
+    topbars.forEach(topbar => {
+        if (!topbar.querySelector(".sidebar-toggle-btn")) {
+            const toggleBtn = document.createElement("button");
+            toggleBtn.className = "sidebar-toggle-btn";
+            toggleBtn.title = "Toggle Sidebar (Hide/Show)";
+            toggleBtn.innerHTML = `<span>${savedState === "true" ? "⇥" : "☰"}</span>`;
+            toggleBtn.addEventListener("click", toggleSidebar);
+            topbar.prepend(toggleBtn);
         }
     });
+
+    const existingToggle = document.getElementById("sidebarToggleBtn");
+    if (existingToggle) {
+        const span = existingToggle.querySelector("span");
+        if (span) span.textContent = savedState === "true" ? "⇥" : "☰";
+        existingToggle.onclick = toggleSidebar;
+    }
+}
+
+function toggleSidebar() {
+    const isCollapsed = document.body.classList.toggle("sidebar-collapsed");
+    localStorage.setItem("sonicflow_sidebar_collapsed", isCollapsed ? "true" : "false");
+
+    const toggleSpans = document.querySelectorAll(".sidebar-toggle-btn span");
+    toggleSpans.forEach(span => {
+        span.textContent = isCollapsed ? "⇥" : "☰";
+    });
+}
+
+// Auto-run sidebar setup
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initSidebarToggle);
+} else {
+    initSidebarToggle();
+}
+
+// ============================================
+// LOGIN CELEBRATION: ROSE GOLD HARMONIC LIGHT WAVE
+// ============================================
+
+function triggerCelebrationEntrance() {
+    // Avoid duplicate overlays
+    if (document.querySelector(".celebration-overlay")) return;
+
+    const overlay = document.createElement("div");
+    overlay.className = "celebration-overlay";
+
+    // 1. Full-Screen Rose Gold Ambient Bloom Surge
+    const surge = document.createElement("div");
+    surge.className = "rose-gold-surge";
+    overlay.appendChild(surge);
+
+    // 2. High-Performance Rose Gold Prismatic Beam Sweep
+    const beam = document.createElement("div");
+    beam.className = "rose-gold-beam";
+    overlay.appendChild(beam);
+
+    // 3. Central Expanding Rose Gold Shockwaves
+    const shockwave1 = document.createElement("div");
+    shockwave1.className = "rose-gold-shockwave";
+    const shockwave2 = document.createElement("div");
+    shockwave2.className = "rose-gold-shockwave rose-gold-shockwave-delayed";
+    overlay.appendChild(shockwave1);
+    overlay.appendChild(shockwave2);
+
+    // 4. Multi-Layer Rose Gold Harmonic Soundwave (SVG)
+    const waveContainer = document.createElement("div");
+    waveContainer.className = "rose-gold-wave-container";
+
+    waveContainer.innerHTML = `
+        <svg class="rose-gold-wave-svg" viewBox="0 0 1440 380" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="roseGoldGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#FFF5F2" stop-opacity="0"/>
+                    <stop offset="20%" stop-color="#F7C5B8" stop-opacity="0.95"/>
+                    <stop offset="50%" stop-color="#FFF5F2" stop-opacity="1"/>
+                    <stop offset="80%" stop-color="#E0A899" stop-opacity="0.95"/>
+                    <stop offset="100%" stop-color="#AD525E" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="roseGoldGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#FFF5F2" stop-opacity="0"/>
+                    <stop offset="30%" stop-color="#E0A899" stop-opacity="0.85"/>
+                    <stop offset="50%" stop-color="#FFFFFF" stop-opacity="1"/>
+                    <stop offset="70%" stop-color="#F7C5B8" stop-opacity="0.9"/>
+                    <stop offset="100%" stop-color="#AD525E" stop-opacity="0"/>
+                </linearGradient>
+            </defs>
+            
+            <!-- Broad Harmonic Ambient Glow Ribbon -->
+            <path d="M0,190 Q360,45 720,190 T1440,190" fill="none" stroke="rgba(247,197,184,0.4)" stroke-width="28" stroke-linecap="round"/>
+            
+            <!-- Primary Rose Gold Light Wave -->
+            <path d="M0,190 Q360,25 720,190 T1440,190" fill="none" stroke="url(#roseGoldGrad1)" stroke-width="6.5" stroke-linecap="round"/>
+            
+            <!-- Secondary Harmonic Counter Wave -->
+            <path d="M0,190 Q360,355 720,190 T1440,190" fill="none" stroke="url(#roseGoldGrad2)" stroke-width="4" stroke-linecap="round"/>
+            
+            <!-- High-Frequency Fine Laser Wave -->
+            <path d="M0,190 Q180,95 360,190 T720,190 T1080,190 T1440,190" fill="none" stroke="#FFF5F2" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+    `;
+
+    // 5. Sparkling Rose Gold Flares along wave crest
+    const flarePositions = [
+        { left: "20%", top: "44%", size: 28, delay: 0.08 },
+        { left: "36%", top: "26%", size: 36, delay: 0.2 },
+        { left: "50%", top: "50%", size: 42, delay: 0.15 },
+        { left: "66%", top: "70%", size: 34, delay: 0.28 },
+        { left: "80%", top: "50%", size: 26, delay: 0.12 }
+    ];
+
+    flarePositions.forEach(pos => {
+        const flare = document.createElement("span");
+        flare.className = "rose-gold-flare";
+        flare.textContent = "✦";
+        flare.style.left = pos.left;
+        flare.style.top = pos.top;
+        flare.style.setProperty("--flare-size", `${pos.size}px`);
+        flare.style.animationDelay = `${pos.delay}s`;
+        waveContainer.appendChild(flare);
+    });
+
+    overlay.appendChild(waveContainer);
+    document.body.appendChild(overlay);
+
+    // 6. Smooth Hardware-Accelerated Fade Out after 1.4s
+    setTimeout(() => {
+        overlay.classList.add("fade-out");
+        setTimeout(() => {
+            if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+        }, 550);
+    }, 1400);
+}
+
+// Global expose for testing or manual celebration
+window.triggerCelebrationEntrance = triggerCelebrationEntrance;
+
+// 7. Trigger celebration upon fresh login
+document.addEventListener("DOMContentLoaded", function() {
+    const justLoggedIn = sessionStorage.getItem("sonicflow_just_logged_in");
+    if (justLoggedIn === "true") {
+        sessionStorage.removeItem("sonicflow_just_logged_in");
+        setTimeout(() => {
+            triggerCelebrationEntrance();
+        }, 150);
+    }
 });

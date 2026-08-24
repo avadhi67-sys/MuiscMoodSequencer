@@ -136,6 +136,9 @@
                     <button class="primary-button" id="createFlowButton">
                         <span>✦</span> Generate Mood Flow
                     </button>
+                    <button class="primary-button" id="playFlowButton" style="background: #AD525E;">
+                        <span>▶</span> Play Sequence
+                    </button>
                     <button class="secondary-button" id="smartShuffleButton">
                         <span>⤨</span> Smart Shuffle
                     </button>
@@ -189,6 +192,9 @@
             </div>
             <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
                 <div class="flow-status" id="flowStatus">Select a track to build your flow</div>
+                <button type="button" class="primary-button" id="playFlowHeaderBtn" style="padding: 6px 14px; font-size: 11.5px; display: none;">
+                    <span>▶</span> Play Flow
+                </button>
                 <button type="button" class="secondary-button" id="viewGraphHeaderBtn" style="padding: 6px 12px; font-size: 11.5px;">
                     <span>📊</span> Analysis Graph
                 </button>
@@ -283,7 +289,7 @@
 
         <div class="player-controls">
             <button class="control-button" id="previousButton" title="Previous">◀</button>
-            <button class="play-button" id="playButton" title="Play">▶</button>
+            <button class="play-button" id="playPauseButton" title="Play">▶</button>
             <button class="control-button" id="nextButton" title="Next">▶</button>
         </div>
 

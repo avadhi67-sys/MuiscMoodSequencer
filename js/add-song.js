@@ -32,11 +32,19 @@ const songTempo =
 const songAudio =
     document.getElementById("songAudio");
 
+const songImage =
+    document.getElementById("songImage");
+
 const energyValue =
     document.getElementById("energyValue");
 
 const fileName =
     document.getElementById("fileName");
+
+const imageFileName =
+    document.getElementById("imageFileName");
+
+let uploadedCoverDataUrl = "";
 
 const formMessage =
     document.getElementById("formMessage");
@@ -172,7 +180,7 @@ if (songEnergy && energyValue) {
 
 
 // ============================================
-// AUDIO FILE NAME
+// AUDIO FILE NAME & IMAGE UPLOAD
 // ============================================
 
 if (songAudio && fileName) {
@@ -192,6 +200,30 @@ if (songAudio && fileName) {
                 fileName.textContent =
                     "Choose an audio file";
 
+            }
+
+        }
+    );
+
+}
+
+if (songImage && imageFileName) {
+
+    songImage.addEventListener(
+        "change",
+        function() {
+
+            if (songImage.files && songImage.files[0]) {
+                const file = songImage.files[0];
+                imageFileName.textContent = file.name;
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    uploadedCoverDataUrl = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            } else {
+                imageFileName.textContent = "Choose custom cover image (or leave empty for auto art)";
+                uploadedCoverDataUrl = "";
             }
 
         }
@@ -399,6 +431,8 @@ if (addSongForm) {
 
                 tempo: tempo,
 
+                image: uploadedCoverDataUrl || "",
+
                 audioFile: audioFile,
 
                 createdAt:
@@ -442,6 +476,7 @@ if (addSongForm) {
                 // Reset form
 
                 addSongForm.reset();
+                uploadedCoverDataUrl = "";
 
 
                 // Reset energy display
@@ -454,12 +489,19 @@ if (addSongForm) {
                 }
 
 
-                // Reset file name
+                // Reset file names
 
                 if (fileName) {
 
                     fileName.textContent =
                         "Choose an audio file";
+
+                }
+
+                if (imageFileName) {
+
+                    imageFileName.textContent =
+                        "Choose custom cover image (or leave empty for auto art)";
 
                 }
 

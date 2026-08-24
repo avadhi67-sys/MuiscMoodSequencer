@@ -208,6 +208,7 @@ if (signupForm) {
                 JSON.stringify(user)
             );
 
+            sessionStorage.setItem("sonicflow_just_logged_in", "true");
 
             // SUCCESS
 
@@ -320,6 +321,7 @@ if (loginForm) {
                 JSON.stringify(user)
             );
 
+            sessionStorage.setItem("sonicflow_just_logged_in", "true");
 
             // SUCCESS
 

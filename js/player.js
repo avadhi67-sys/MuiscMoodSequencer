@@ -119,7 +119,9 @@ function playSong(song, songs = null) {
     // CHECK AUDIO FILE
     // ========================================
 
-    if (!song.audioFile) {
+    const audioData = song.audioFile || song.file;
+
+    if (!audioData) {
 
         console.error(
             "❌ Audio file missing:",
@@ -157,7 +159,7 @@ function playSong(song, songs = null) {
         currentAudio =
             new Audio(
                 URL.createObjectURL(
-                    song.audioFile
+                    audioData
                 )
             );
 
@@ -315,22 +317,22 @@ function updatePlayerSongInfo() {
     }
 
 
-    if (playerTitle) {
+    const title = currentSong.title || "Unknown Song";
+    const artist = currentSong.artist || "Unknown Artist";
+    const mood = currentSong.mood || "—";
+    const energy = currentSong.energy ? `${currentSong.energy}/10` : "—";
 
-        playerTitle.textContent =
-            currentSong.title ||
-            "Unknown Song";
+    const flowTitle = document.getElementById("flowPlayerTitle");
+    const flowArtist = document.getElementById("flowPlayerArtist");
+    const flowMood = document.getElementById("flowMoodPill");
+    const flowEnergy = document.getElementById("flowEnergyPill");
 
-    }
-
-
-    if (playerArtist) {
-
-        playerArtist.textContent =
-            currentSong.artist ||
-            "Unknown Artist";
-
-    }
+    if (playerTitle) playerTitle.textContent = title;
+    if (playerArtist) playerArtist.textContent = artist;
+    if (flowTitle) flowTitle.textContent = title;
+    if (flowArtist) flowArtist.textContent = artist;
+    if (flowMood) flowMood.textContent = mood;
+    if (flowEnergy) flowEnergy.textContent = energy;
 
 }
 

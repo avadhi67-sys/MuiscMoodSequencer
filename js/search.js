@@ -22,14 +22,28 @@ document.addEventListener("DOMContentLoaded", function () {
     // ==========================================================================
 
     async function init() {
-        // Read URL query parameter if navigated from topbar on another page
+        // Read URL query parameter if navigated from topbar or mood cards on another page
         const urlParams = new URLSearchParams(window.location.search);
         const queryParam = urlParams.get("q");
+        const moodParam = urlParams.get("mood");
+
         if (queryParam) {
             currentQuery = queryParam.trim().toLowerCase();
             if (mainSearchInput) mainSearchInput.value = queryParam;
             if (topbarSearch) topbarSearch.value = queryParam;
             if (clearSearchBtn) clearSearchBtn.style.display = "flex";
+        }
+
+        if (moodParam) {
+            currentMood = moodParam.trim().toLowerCase();
+            moodPills.forEach(pill => {
+                const pMood = (pill.getAttribute("data-mood") || "").toLowerCase();
+                if (pMood === currentMood) {
+                    pill.classList.add("active");
+                } else {
+                    pill.classList.remove("active");
+                }
+            });
         }
 
         await loadAllSongs();
@@ -158,9 +172,13 @@ document.addEventListener("DOMContentLoaded", function () {
         filtered.forEach(function (song) {
             const card = document.createElement("div");
             card.className = "song-card";
+            const coverImgUrl = typeof getSongCoverImage === "function" ? getSongCoverImage(song) : "";
             card.innerHTML = `
                 <div class="song-cover">
-                    <span>♫</span>
+                    ${coverImgUrl 
+                        ? `<img src="${escapeHTML(coverImgUrl)}" alt="${escapeHTML(song.title || 'Track')}" class="song-cover-img" loading="lazy" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='flex';"><span class="song-cover-fallback" style="display:none;">♫</span>`
+                        : `<span>♫</span>`
+                    }
                 </div>
                 <div class="song-info">
                     <h3>${escapeHTML(song.title || "Untitled")}</h3>

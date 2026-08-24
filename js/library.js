@@ -249,13 +249,15 @@
         card.className =
             "song-card";
 
+        const coverImgUrl = typeof getSongCoverImage === "function" ? getSongCoverImage(song) : "";
 
         card.innerHTML = `
 
             <div class="song-cover">
-
-                <span>♫</span>
-
+                ${coverImgUrl 
+                    ? `<img src="${escapeHTML(coverImgUrl)}" alt="${escapeHTML(song.title || 'Track')}" class="song-cover-img" loading="lazy" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='flex';"><span class="song-cover-fallback" style="display:none;">♫</span>`
+                    : `<span>♫</span>`
+                }
             </div>
 
 

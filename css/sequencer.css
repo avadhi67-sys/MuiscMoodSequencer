@@ -369,6 +369,52 @@
     text-transform: uppercase;
 }
 
+/* Flow Item Play Button & Active State */
+.flow-item {
+    cursor: pointer;
+}
+
+.flow-item.active-playing {
+    border-color: #AD525E;
+    background: rgba(173, 82, 94, 0.08);
+    box-shadow: 0 0 0 1px #AD525E, var(--shadow-sm);
+}
+
+.flow-item.active-playing .flow-cover {
+    background: #AD525E;
+    color: #FFFFFF;
+}
+
+.flow-item-play-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--bg-surface-hover);
+    border: 1px solid var(--border);
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    cursor: pointer;
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.flow-item:hover .flow-item-play-btn,
+.flow-item-play-btn:hover {
+    background: #AD525E;
+    color: #FFFFFF;
+    border-color: #AD525E;
+    transform: scale(1.1);
+}
+
+.flow-item.active-playing .flow-item-play-btn {
+    background: #AD525E;
+    color: #FFFFFF;
+    border-color: #AD525E;
+}
+
 /* Empty Flow */
 .empty-flow {
     min-height: 240px;

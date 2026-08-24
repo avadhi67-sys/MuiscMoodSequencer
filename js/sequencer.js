@@ -335,10 +335,15 @@ function showSelectedSong() {
     // SHOW SONG
     // ========================================
 
+    const songCoverUrl = typeof getSongCoverImage === "function" ? getSongCoverImage(song) : "";
+
     selectedSongBox.innerHTML = `
 
         <div class="selected-cover">
-            ♪
+            ${songCoverUrl 
+                ? `<img src="${escapeHTML(songCoverUrl)}" alt="Cover" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">`
+                : `♪`
+            }
         </div>
 
         <div>
@@ -944,248 +949,166 @@ let latestFlowData = [];
 
 function renderFlow(flow) {
     latestFlowData = flow || [];
+    const playFlowHeaderBtn = document.getElementById("playFlowHeaderBtn");
 
     if (!generatedFlow) {
-
         return;
-
     }
 
-
-    if (
-        flow.length === 0
-    ) {
-
+    if (flow.length === 0) {
+        if (playFlowHeaderBtn) playFlowHeaderBtn.style.display = "none";
         generatedFlow.innerHTML = `
-
             <div class="empty-flow">
-
-                <div class="empty-icon">
-                    ♪
-                </div>
-
-                <h3>
-                    No flow created
-                </h3>
-
-                <p>
-                    Select a starting song
-                    and create your
-                    musical journey.
-                </p>
-
+                <div class="empty-icon">♪</div>
+                <h3>No flow created</h3>
+                <p>Select a starting song and create your musical journey.</p>
             </div>
-
         `;
-
-
         return;
-
     }
 
-
+    if (playFlowHeaderBtn) playFlowHeaderBtn.style.display = "inline-flex";
     generatedFlow.innerHTML = "";
 
-
-    flow.forEach(
-        function(item, index) {
-
-            const song =
-                item.song;
-
-
-            const score =
-                Math.round(
-                    item.score * 100
-                );
-
-
-            const flowItem =
-                document.createElement(
-                    "div"
-                );
-
-
-            flowItem.className =
-                "flow-item";
-
-
-            flowItem.style.animationDelay =
-                `${index * 0.08}s`;
-
-
-            // =================================
-            // STARTING SONG
-            // =================================
-
-            if (index === 0) {
-
-                flowItem.innerHTML = `
-
-                    <div class="flow-number">
-                        01
-                    </div>
-
-
-                    <div class="flow-cover">
-                        ♪
-                    </div>
-
-
-                    <div class="flow-song-info">
-
-                        <strong>
-                            ${escapeHTML(
-                                song.title
-                            )}
-                        </strong>
-
-                        <span>
-                            ${escapeHTML(
-                                song.artist
-                            )}
-                        </span>
-
-                    </div>
-
-
-                    <div class="flow-meta">
-
-                        <span>
-                            ${song.tempo} BPM
-                        </span>
-
-                        <span>
-                            ${escapeHTML(
-                                song.mood
-                            )}
-                        </span>
-
-                        <span>
-                            Energy ${song.energy}
-                        </span>
-
-                    </div>
-
-
-                    <div class="transition-score">
-
-                        <strong>
-                            START
-                        </strong>
-
-                        <span>
-                            starting point
-                        </span>
-
-                    </div>
-
-                `;
-
-            }
-
-            // =================================
-            // FOLLOWING SONGS
-            // =================================
-
-            else {
-
-                const moodPercent =
-                    Math.round(
-                        item.moodScore * 100
-                    );
-
-
-                const energyPercent =
-                    Math.round(
-                        item.energyScore * 100
-                    );
-
-
-                const tempoPercent =
-                    Math.round(
-                        item.tempoScore * 100
-                    );
-
-
-                flowItem.innerHTML = `
-
-                    <div class="flow-number">
-                        ${String(
-                            index + 1
-                        ).padStart(2, "0")}
-                    </div>
-
-
-                    <div class="flow-cover">
-                        ♪
-                    </div>
-
-
-                    <div class="flow-song-info">
-
-                        <strong>
-                            ${escapeHTML(
-                                song.title
-                            )}
-                        </strong>
-
-                        <span>
-                            ${escapeHTML(
-                                song.artist
-                            )}
-                        </span>
-
-                    </div>
-
-
-                    <div class="flow-meta">
-
-                        <span>
-                            ${song.tempo} BPM
-                        </span>
-
-                        <span>
-                            ${escapeHTML(
-                                song.mood
-                            )}
-                        </span>
-
-                        <span>
-                            Energy ${song.energy}
-                        </span>
-
-                    </div>
-
-
-                    <div class="transition-score">
-
-                        <strong>
-                            ${score}%
-                        </strong>
-
-                        <span>
-                            Mood ${moodPercent}%
-                            • Energy ${energyPercent}%
-                            • BPM ${tempoPercent}%
-                        </span>
-
-                    </div>
-
-                `;
-
-            }
-
-
-            generatedFlow.appendChild(
-                flowItem
-            );
-
+    const flowSongList = flow.map(item => item.song);
+
+    flow.forEach(function(item, index) {
+        const song = item.song;
+        const score = Math.round(item.score * 100);
+        const flowItem = document.createElement("div");
+        flowItem.className = "flow-item";
+        flowItem.setAttribute("data-song-id", song.id);
+        flowItem.style.animationDelay = `${index * 0.08}s`;
+
+        const songCoverUrl = typeof getSongCoverImage === "function" ? getSongCoverImage(song) : "";
+        const coverSnippet = songCoverUrl
+            ? `<img src="${escapeHTML(songCoverUrl)}" alt="Cover" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">`
+            : `♪`;
+
+        if (index === 0) {
+            flowItem.innerHTML = `
+                <div class="flow-number">01</div>
+                <div class="flow-cover">${coverSnippet}</div>
+                <div class="flow-song-info">
+                    <strong>${escapeHTML(song.title)}</strong>
+                    <span>${escapeHTML(song.artist)}</span>
+                </div>
+                <div class="flow-meta">
+                    <span>${song.tempo} BPM</span>
+                    <span>${escapeHTML(song.mood)}</span>
+                    <span>Energy ${song.energy}</span>
+                </div>
+                <div class="transition-score">
+                    <strong>START</strong>
+                    <span>starting point</span>
+                </div>
+                <button type="button" class="flow-item-play-btn" title="Play track">▶</button>
+            `;
+        } else {
+            const moodPercent = Math.round(item.moodScore * 100);
+            const energyPercent = Math.round(item.energyScore * 100);
+            const tempoPercent = Math.round(item.tempoScore * 100);
+
+            flowItem.innerHTML = `
+                <div class="flow-number">${String(index + 1).padStart(2, "0")}</div>
+                <div class="flow-cover">${coverSnippet}</div>
+                <div class="flow-song-info">
+                    <strong>${escapeHTML(song.title)}</strong>
+                    <span>${escapeHTML(song.artist)}</span>
+                </div>
+                <div class="flow-meta">
+                    <span>${song.tempo} BPM</span>
+                    <span>${escapeHTML(song.mood)}</span>
+                    <span>Energy ${song.energy}</span>
+                </div>
+                <div class="transition-score">
+                    <strong>${score}%</strong>
+                    <span>Mood ${moodPercent}% • Energy ${energyPercent}% • BPM ${tempoPercent}%</span>
+                </div>
+                <button type="button" class="flow-item-play-btn" title="Play track">▶</button>
+            `;
         }
-    );
 
+        // On clicking flowItem or play button
+        flowItem.addEventListener("click", function () {
+            if (typeof playSong === "function") {
+                playSong(song, flowSongList);
+                updateActiveFlowItem(song.id);
+            }
+        });
+
+        generatedFlow.appendChild(flowItem);
+    });
 }
 
+function updateActiveFlowItem(songId) {
+    const items = document.querySelectorAll(".flow-item");
+    items.forEach(el => {
+        if (String(el.getAttribute("data-song-id")) === String(songId)) {
+            el.classList.add("active-playing");
+            const btn = el.querySelector(".flow-item-play-btn");
+            if (btn) btn.textContent = "❚❚";
+        } else {
+            el.classList.remove("active-playing");
+            const btn = el.querySelector(".flow-item-play-btn");
+            if (btn) btn.textContent = "▶";
+        }
+    });
+}
+
+// ============================================
+// PLAY FLOW CONTROLLER
+// ============================================
+
+const playFlowButton = document.getElementById("playFlowButton");
+const playFlowHeaderBtn = document.getElementById("playFlowHeaderBtn");
+
+function startPlayingActiveFlow() {
+    if (latestFlowData && latestFlowData.length > 0) {
+        const flowSongs = latestFlowData.map(f => f.song);
+        if (typeof playSong === "function") {
+            playSong(flowSongs[0], flowSongs);
+            updateActiveFlowItem(flowSongs[0].id);
+        }
+        return;
+    }
+
+    // If flow not generated yet, try generating from selection or first available song
+    const songId = songSelector ? songSelector.value : null;
+    let startingSong = songId ? findSongById(songId) : null;
+    const songs = getAvailableSongs();
+
+    if (!startingSong && songs.length > 0) {
+        startingSong = songs[0];
+        if (songSelector) songSelector.value = startingSong.id;
+        showSelectedSong();
+    }
+
+    if (!startingSong) {
+        alert("Please add songs to your library first.");
+        return;
+    }
+
+    const flow = createMoodFlow(startingSong);
+    renderFlow(flow);
+    if (flowStatus) {
+        flowStatus.textContent = `${flow.length} songs • Playing flow`;
+    }
+
+    const flowSongs = flow.map(f => f.song);
+    if (typeof playSong === "function") {
+        playSong(flowSongs[0], flowSongs);
+        updateActiveFlowItem(flowSongs[0].id);
+    }
+}
+
+if (playFlowButton) {
+    playFlowButton.addEventListener("click", startPlayingActiveFlow);
+}
+
+if (playFlowHeaderBtn) {
+    playFlowHeaderBtn.addEventListener("click", startPlayingActiveFlow);
+}
 
 // ============================================
 // CREATE MY FLOW
@@ -1667,8 +1590,33 @@ async function initializeSequencer() {
 
     loadSongOptions();
 
+    // Check for URL parameters from Home Page / Quick Launch
+    const urlParams = new URLSearchParams(window.location.search);
+    const startId = urlParams.get("startId");
+    const targetMood = urlParams.get("mood");
+
+    if (startId && songSelector) {
+        const found = availableSongs.find(s => String(s.id) === String(startId));
+        if (found) {
+            songSelector.value = String(found.id);
+        }
+    } else if (targetMood && songSelector) {
+        const foundMood = availableSongs.find(s => (s.mood || "").toLowerCase() === targetMood.toLowerCase());
+        if (foundMood) {
+            songSelector.value = String(foundMood.id);
+        }
+    }
+
     showSelectedSong();
 
+    // If param was provided and song found, auto create flow
+    if ((startId || targetMood) && songSelector && songSelector.value) {
+        setTimeout(() => {
+            if (typeof createHarmonicFlow === "function") {
+                createHarmonicFlow();
+            }
+        }, 200);
+    }
 
     console.log(
         "✦ SonicFlow mood engine ready"

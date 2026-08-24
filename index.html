@@ -84,12 +84,18 @@
 <main class="main-content">
     <!-- Topbar -->
     <header class="topbar">
+        <button class="sidebar-toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar">
+            <span>☰</span>
+        </button>
         <div class="mobile-brand">
             Sonic<span>Flow</span>
         </div>
-        <div class="search-box">
-            <span>⌕</span>
-            <input type="text" placeholder="Search your music, moods, artists...">
+        <div class="topbar-quote-wrapper" id="topbarQuoteWrapper">
+            <span class="quote-sparkle">✦</span>
+            <div class="topbar-quote-content" id="topbarQuoteContent">
+                <span class="topbar-quote" id="topbarQuote">"Where words fail, music speaks."</span>
+                <span class="quote-author" id="topbarQuoteAuthor">— Hans Christian Andersen</span>
+            </div>
         </div>
         <div class="topbar-actions">
             <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle dark and light mode">
@@ -132,13 +138,13 @@
             <!-- Stats Bar -->
             <div class="hero-stats">
                 <div class="stat-item">
-                    <strong>3</strong>
-                    <span>Acoustic Factors</span>
+                    <strong id="heroTotalSongs">0 Tracks</strong>
+                    <span>In Library</span>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat-item">
                     <strong>100%</strong>
-                    <span>BPM & Key Harmonics</span>
+                    <span>Harmonic Match</span>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat-item">
@@ -148,11 +154,11 @@
             </div>
         </div>
 
-        <!-- Minimal Interactive Waveform Showcase -->
+        <!-- Interactive Spectrum Visualizer Showcase -->
         <div class="hero-showcase">
-            <div class="showcase-card">
+            <div class="showcase-card" title="Click to modulate audio spectrum">
                 <div class="showcase-header">
-                    <div class="track-badge">Now Analyzing</div>
+                    <div class="track-badge">Engine Active</div>
                     <div class="bpm-indicator">128 BPM</div>
                 </div>
 
@@ -178,9 +184,198 @@
                     </div>
                     <div class="match-score">
                         <span>Transition Score</span>
-                        <strong>98% Match</strong>
+                        <strong>99% Match</strong>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIVE LIBRARY METRICS BAR -->
+    <div class="metrics-ribbon">
+        <div class="metric-card">
+            <div class="metric-icon">♫</div>
+            <div class="metric-info">
+                <span>Stored Tracks</span>
+                <strong id="metricSongsCount">0</strong>
+            </div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-icon">⚡</div>
+            <div class="metric-info">
+                <span>Dominant Vibe</span>
+                <strong id="metricDominantMood">Chill</strong>
+            </div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-icon">⏱</div>
+            <div class="metric-info">
+                <span>Average Tempo</span>
+                <strong id="metricAvgBpm">120 BPM</strong>
+            </div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-icon">✦</div>
+            <div class="metric-info">
+                <span>Flow Index</span>
+                <strong id="metricFlowScore">98%</strong>
+            </div>
+        </div>
+        <div class="metric-action">
+            <div class="engine-live-badge">
+                <span class="live-dot"></span>
+                <span>HARMONIC ENGINE ACTIVE</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- INSTANT FLOW STUDIO (INTERACTIVE GENERATOR WIDGET) -->
+    <section class="section-block">
+        <div class="section-heading">
+            <div>
+                <span class="section-tag">QUICK MIX STUDIO</span>
+                <h2>Instant Mood Flow Generator</h2>
+            </div>
+            <a href="sequencer.html" class="section-link">Advanced sequencer →</a>
+        </div>
+
+        <div class="flow-studio-card">
+            <div class="studio-grid">
+                <div class="studio-controls">
+                    <h3>1. Select Desired Emotion & Energy</h3>
+                    <p>Adjust the vibe parameters below. SonicFlow instantly computes the harmonic transition profile.</p>
+
+                    <div class="flow-mood-pills">
+                        <button class="flow-mood-pill active" data-mood="Chill">
+                            <span class="pill-icon">☾</span> Chill
+                        </button>
+                        <button class="flow-mood-pill" data-mood="Happy">
+                            <span class="pill-icon">☀</span> Happy
+                        </button>
+                        <button class="flow-mood-pill" data-mood="Energetic">
+                            <span class="pill-icon">⚡</span> Energetic
+                        </button>
+                        <button class="flow-mood-pill" data-mood="Dreamy">
+                            <span class="pill-icon">✦</span> Dreamy
+                        </button>
+                        <button class="flow-mood-pill" data-mood="Focus">
+                            <span class="pill-icon">◎</span> Focus
+                        </button>
+                    </div>
+
+                    <div class="studio-slider-wrap">
+                        <div class="slider-header">
+                            <span>Target Energy Level</span>
+                            <strong id="studioEnergyDisplay">6/10</strong>
+                        </div>
+                        <input type="range" min="1" max="10" value="6" class="studio-range-input" id="studioEnergySlider">
+                    </div>
+                </div>
+
+                <div class="studio-predictions">
+                    <div class="prediction-item">
+                        <span>Predicted Continuity</span>
+                        <strong class="highlight-red" id="studioMatchScore">98%</strong>
+                    </div>
+                    <div class="prediction-item">
+                        <span>Target Tempo Window</span>
+                        <strong id="studioTargetBpm">85 - 95 BPM</strong>
+                    </div>
+                    <div class="prediction-item">
+                        <span>Harmonic Curve</span>
+                        <strong>Linear Ramp</strong>
+                    </div>
+                    <button class="btn-launch-flow" id="btnLaunchStudioFlow">
+                        <span>✦</span> Launch Custom Mood Flow
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- HARMONIC TRANSITION RADAR (SCIENCE OF FLOW) -->
+    <section class="section-block">
+        <div class="section-heading">
+            <div>
+                <span class="section-tag">THE ALGORITHM</span>
+                <h2>Harmonic Transition Matrix</h2>
+            </div>
+        </div>
+
+        <div class="harmonic-matrix-card">
+            <div class="radar-grid">
+                <div class="radar-nodes">
+                    <div class="radar-mood-node active" data-radar="chill">
+                        <div class="node-header">
+                            <span class="node-title">☾ Chillout</span>
+                            <span class="node-bpm">75-95 BPM</span>
+                        </div>
+                        <div class="node-spectrum"></div>
+                    </div>
+
+                    <div class="radar-mood-node" data-radar="dreamy">
+                        <div class="node-header">
+                            <span class="node-title">✦ Dreamy</span>
+                            <span class="node-bpm">90-110 BPM</span>
+                        </div>
+                        <div class="node-spectrum"></div>
+                    </div>
+
+                    <div class="radar-mood-node" data-radar="happy">
+                        <div class="node-header">
+                            <span class="node-title">☀ Happy</span>
+                            <span class="node-bpm">110-126 BPM</span>
+                        </div>
+                        <div class="node-spectrum"></div>
+                    </div>
+
+                    <div class="radar-mood-node" data-radar="energetic">
+                        <div class="node-header">
+                            <span class="node-title">⚡ Energetic</span>
+                            <span class="node-bpm">126-145 BPM</span>
+                        </div>
+                        <div class="node-spectrum"></div>
+                    </div>
+                </div>
+
+                <div class="radar-detail-box" id="radarDetailBox">
+                    <h4>Chill Harmonic Anchor</h4>
+                    <p>Low energy baseline (70-95 BPM). Transitioning from Chill to Dreamy yields a 99% Harmonic Match with sub-bass frequency alignment.</p>
+                    <div class="radar-compat-tag">99% to Dreamy • 92% to Happy</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENGINE COMPARISON: SHUFFLE VS SONICFLOW -->
+    <section class="section-block">
+        <div class="section-heading">
+            <div>
+                <span class="section-tag">INTELLIGENCE</span>
+                <h2>Why SonicFlow is Different</h2>
+            </div>
+        </div>
+
+        <div class="comparison-grid">
+            <div class="comparison-card">
+                <span class="comp-badge legacy">Standard Shuffle</span>
+                <h3>Randomized Playlist Playback</h3>
+                <ul class="comparison-list">
+                    <li><span class="icon-bad">✕</span> Jarring ±50 BPM tempo collisions</li>
+                    <li><span class="icon-bad">✕</span> Emotional whiplash between energetic and melancholy</li>
+                    <li><span class="icon-bad">✕</span> Incompatible key harmonics causing cognitive friction</li>
+                    <li><span class="icon-bad">✕</span> Constant need to manually skip songs</li>
+                </ul>
+            </div>
+
+            <div class="comparison-card highlight">
+                <span class="comp-badge sonic">SonicFlow Engine</span>
+                <h3>Harmonic Acoustic Trajectory</h3>
+                <ul class="comparison-list">
+                    <li><span class="icon-good">✓</span> Seamless tempo gradients with subtle BPM step locks</li>
+                    <li><span class="icon-good">✓</span> Mood-continuity vectors that preserve mental flow state</li>
+                    <li><span class="icon-good">✓</span> Adaptive energy ramping tailored to your day</li>
+                    <li><span class="icon-good">✓</span> Zero abrupt stops or jarring emotional shifts</li>
+                </ul>
             </div>
         </div>
     </section>
@@ -190,7 +385,7 @@
         <div class="section-heading">
             <div>
                 <span class="section-tag">VIBE EXPLORER</span>
-                <h2>What are you feeling today?</h2>
+                <h2>Explore by Emotion</h2>
             </div>
             <a href="search.html" class="section-link">Explore all vibes →</a>
         </div>
@@ -272,6 +467,8 @@
 </main>
 
 <script src="js/storage.js"></script>
+<script src="js/songs.js"></script>
 <script src="js/app.js"></script>
+<script src="js/home.js"></script>
 </body>
 </html>

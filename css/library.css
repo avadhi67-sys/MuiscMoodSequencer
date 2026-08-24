@@ -186,9 +186,29 @@
     transition: var(--transition);
 }
 
+.song-cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: inherit;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.3s ease;
+}
+
+.song-cover-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.song-card:hover .song-cover-img {
+    transform: scale(1.06);
+    filter: brightness(1.05);
+}
+
 .song-card:hover .song-cover {
-    background: #AD525E;
-    color: #FFFFFF;
     border-color: #AD525E;
 }
 
