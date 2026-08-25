@@ -1,7 +1,12 @@
 /* ==========================================================================
    SONICFLOW ARTISTS STYLES
+<<<<<<< HEAD
    Dark & Light Mode • Navy, Purple, Sage Green & Wine
    Palette: #0D1445 • #BFBFDB • #C2D9D1 • #FCF0D6 • #E6DFE2
+=======
+   Dark & Light Mode • Navy, Purple, Sage Green, Berry Red & Blush Pink
+   Palette: #0D1445 • #BFBFDB • #C2D9D1 • #AD525E • #E0D6D9
+>>>>>>> f488952eac721cff9e8db671353847099801d9b0
    ========================================================================== */
 
 /* Header */
@@ -22,7 +27,11 @@
 }
 
 .artists-header h1 span {
+<<<<<<< HEAD
     color: #FCF0D6;
+=======
+    color: #AD525E;
+>>>>>>> f488952eac721cff9e8db671353847099801d9b0
 }
 
 .artists-description {
@@ -63,11 +72,19 @@
 .artist-count {
     font-size: 11px;
     font-weight: 700;
+<<<<<<< HEAD
     color: #FCF0D6;
     background: var(--bg-surface);
     padding: 4px 12px;
     border-radius: var(--radius-full);
     border: 1px solid #FCF0D6;
+=======
+    color: #AD525E;
+    background: var(--bg-surface);
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    border: 1px solid #AD525E;
+>>>>>>> f488952eac721cff9e8db671353847099801d9b0
 }
 
 .artist-grid {
@@ -94,7 +111,11 @@
 
 .artist-card:hover {
     background: var(--bg-surface-hover);
+<<<<<<< HEAD
     border-color: #FCF0D6;
+=======
+    border-color: #AD525E;
+>>>>>>> f488952eac721cff9e8db671353847099801d9b0
     transform: translateY(-3px);
     box-shadow: var(--shadow-md);
 }
@@ -129,9 +150,15 @@
 }
 
 .artist-card:hover .artist-avatar {
+<<<<<<< HEAD
     background: #FCF0D6;
     color: #FFFFFF;
     border-color: #FCF0D6;
+=======
+    background: #AD525E;
+    color: #FFFFFF;
+    border-color: #AD525E;
+>>>>>>> f488952eac721cff9e8db671353847099801d9b0
     transform: scale(1.05);
 }
 
@@ -181,7 +208,11 @@
 }
 
 [data-theme="dark"] .artist-badge-count {
+<<<<<<< HEAD
     background: #FCF0D6;
+=======
+    background: #AD525E;
+>>>>>>> f488952eac721cff9e8db671353847099801d9b0
     border-color: var(--bg-surface);
 }
 
@@ -230,7 +261,11 @@
 [data-theme="dark"] .artist-mood-tag {
     background: var(--bg-elevated);
     color: var(--text);
+<<<<<<< HEAD
     border-color: rgba(255, 255, 255, 0.25);
+=======
+    border-color: rgba(191, 191, 219, 0.25);
+>>>>>>> f488952eac721cff9e8db671353847099801d9b0
 }
 
 /* Artist Actions */
@@ -250,6 +285,7 @@
     gap: 6px;
     padding: 9px 12px;
     border-radius: var(--radius-sm);
+<<<<<<< HEAD
     background: #FCF0D6;
     color: #B40023;
     font-size: 12px;
@@ -270,6 +306,21 @@
     color: #B40023;
     transform: translateY(-1px);
     box-shadow: 0 4px 14px rgba(180, 0, 35, 0.35);
+=======
+    background: #AD525E;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 800;
+    transition: var(--transition);
+    border: 1.5px solid #AD525E;
+    cursor: pointer;
+}
+
+.artist-play-btn:hover {
+    background: #933E4A;
+    border-color: #933E4A;
+    transform: translateY(-1px);
+>>>>>>> f488952eac721cff9e8db671353847099801d9b0
 }
 
 .artist-view-btn {
@@ -296,7 +347,11 @@
 
 [data-theme="dark"] .artist-view-btn {
     background: var(--bg-surface-hover);
+<<<<<<< HEAD
     border-color: rgba(255, 255, 255, 0.35);
+=======
+    border-color: rgba(191, 191, 219, 0.35);
+>>>>>>> f488952eac721cff9e8db671353847099801d9b0
     color: #FFFFFF;
 }
 
@@ -409,6 +464,7 @@
 }
 
 @media (max-width: 768px) {
+<<<<<<< HEAD
     .artists-header {
         flex-direction: column;
         align-items: flex-start;
@@ -450,5 +506,13 @@
 
     .artist-image-preview-container .audio-upload {
         width: 100%;
+=======
+    .artists-stats {
+        grid-template-columns: 1fr;
+    }
+    .artists-header {
+        flex-direction: column;
+        align-items: flex-start;
+>>>>>>> f488952eac721cff9e8db671353847099801d9b0
     }
 }

@@ -208,8 +208,12 @@ if (signupForm) {
                 JSON.stringify(user)
             );
 
+<<<<<<< HEAD
             // Mark session for one-time home entrance celebration
             sessionStorage.setItem("sonicflow_just_authenticated", "true");
+=======
+            sessionStorage.setItem("sonicflow_just_logged_in", "true");
+>>>>>>> f488952eac721cff9e8db671353847099801d9b0
 
             // SUCCESS
 
@@ -316,13 +320,21 @@ if (loginForm) {
 
 
             // SAVE CURRENT USER
+<<<<<<< HEAD
+=======
+
+>>>>>>> f488952eac721cff9e8db671353847099801d9b0
             localStorage.setItem(
                 "sonicflow_current_user",
                 JSON.stringify(user)
             );
 
+<<<<<<< HEAD
             // Mark session for one-time home entrance celebration
             sessionStorage.setItem("sonicflow_just_authenticated", "true");
+=======
+            sessionStorage.setItem("sonicflow_just_logged_in", "true");
+>>>>>>> f488952eac721cff9e8db671353847099801d9b0
 
             // SUCCESS
 

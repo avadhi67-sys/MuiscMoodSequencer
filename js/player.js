@@ -326,7 +326,10 @@ function updatePlayerSongInfo() {
     const flowArtist = document.getElementById("flowPlayerArtist");
     const flowMood = document.getElementById("flowMoodPill");
     const flowEnergy = document.getElementById("flowEnergyPill");
+<<<<<<< HEAD
     const playerCover = document.getElementById("playerCover");
+=======
+>>>>>>> f488952eac721cff9e8db671353847099801d9b0
 
     if (playerTitle) playerTitle.textContent = title;
     if (playerArtist) playerArtist.textContent = artist;
@@ -335,6 +338,7 @@ function updatePlayerSongInfo() {
     if (flowMood) flowMood.textContent = mood;
     if (flowEnergy) flowEnergy.textContent = energy;
 
+<<<<<<< HEAD
     if (playerCover && typeof getSongCoverImage === "function") {
         const coverUrl = getSongCoverImage(currentSong);
         if (coverUrl) {
@@ -342,6 +346,8 @@ function updatePlayerSongInfo() {
         }
     }
 
+=======
+>>>>>>> f488952eac721cff9e8db671353847099801d9b0
 }
 
 

@@ -1510,7 +1510,11 @@ function renderAcousticTrajectoryGraph(songList) {
             <path d="${tempoPathD}" fill="none" stroke="#BFBFDB" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" />
 
             <!-- Energy Path -->
+<<<<<<< HEAD
             <path d="${energyPathD}" fill="none" stroke="#FCF0D6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" />
+=======
+            <path d="${energyPathD}" fill="none" stroke="#AD525E" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" />
+>>>>>>> f488952eac721cff9e8db671353847099801d9b0
 
             <!-- Data Nodes & Tooltips -->
             ${tempoPoints.map(p => `
@@ -1521,7 +1525,11 @@ function renderAcousticTrajectoryGraph(songList) {
 
             ${energyPoints.map((p, idx) => `
                 <g style="cursor: pointer;">
+<<<<<<< HEAD
                     <circle cx="${p.x}" cy="${p.y}" r="6" fill="#FCF0D6" stroke="var(--bg-surface)" stroke-width="2" />
+=======
+                    <circle cx="${p.x}" cy="${p.y}" r="6" fill="#AD525E" stroke="var(--bg-surface)" stroke-width="2" />
+>>>>>>> f488952eac721cff9e8db671353847099801d9b0
                     <text x="${p.x}" y="${height - 10}" font-size="10" font-weight="800" fill="var(--text-dim)" text-anchor="middle">#${idx + 1}</text>
                     <title>${escapeHTML(p.song.title)} (${escapeHTML(p.song.artist || 'Unknown')})&#10;Mood: ${p.song.mood || 'N/A'}&#10;Energy: ${p.val}/10&#10;Tempo: ${p.song.tempo || 0} BPM</title>
                 </g>

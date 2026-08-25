@@ -1,7 +1,12 @@
 /* ==========================================================================
    SONICFLOW SEARCH STYLES
+<<<<<<< HEAD
    Navy, Purple, Sage Green & Wine
    Palette: #0D1445 • #BFBFDB • #C2D9D1 • #FCF0D6 • #E6DFE2
+=======
+   Navy, Purple, Sage Green, Berry Red & Blush Pink
+   Palette: #0D1445 • #BFBFDB • #C2D9D1 • #AD525E • #E0D6D9
+>>>>>>> f488952eac721cff9e8db671353847099801d9b0
    ========================================================================== */
 
 .search-header {
@@ -20,7 +25,11 @@
 }
 
 .search-header h1 span {
+<<<<<<< HEAD
     color: #FCF0D6;
+=======
+    color: #AD525E;
+>>>>>>> f488952eac721cff9e8db671353847099801d9b0
 }
 
 .search-description {
@@ -46,7 +55,11 @@
 .search-input-wrapper .search-icon {
     position: absolute;
     left: 16px;
+<<<<<<< HEAD
     color: #FCF0D6;
+=======
+    color: #AD525E;
+>>>>>>> f488952eac721cff9e8db671353847099801d9b0
     font-size: 16px;
     pointer-events: none;
 }
@@ -65,7 +78,11 @@
 
 .search-input-wrapper input:focus {
     background: var(--bg-surface-hover);
+<<<<<<< HEAD
     border-color: #FCF0D6;
+=======
+    border-color: #AD525E;
+>>>>>>> f488952eac721cff9e8db671353847099801d9b0
 }
 
 .clear-button {
@@ -113,13 +130,21 @@
 .pill:hover {
     background: var(--bg-surface-hover);
     color: var(--text);
+<<<<<<< HEAD
     border-color: #FCF0D6;
+=======
+    border-color: #AD525E;
+>>>>>>> f488952eac721cff9e8db671353847099801d9b0
 }
 
 [data-theme="dark"] .pill {
     background: var(--bg-surface-hover);
     color: var(--text);
+<<<<<<< HEAD
     border: 1px solid rgba(255, 255, 255, 0.28);
+=======
+    border: 1px solid rgba(191, 191, 219, 0.28);
+>>>>>>> f488952eac721cff9e8db671353847099801d9b0
 }
 
 [data-theme="dark"] .pill:hover {
@@ -129,35 +154,49 @@
 }
 
 .pill.active {
+<<<<<<< HEAD
     background: #FCF0D6 !important;
     color: #B40023 !important;
     border-color: #FCF0D6 !important;
     font-weight: 800;
     box-shadow: 0 0 14px rgba(180, 0, 35, 0.25);
+=======
+    background: #AD525E !important;
+    color: #FFFFFF !important;
+    border-color: #AD525E !important;
+    font-weight: 800;
+>>>>>>> f488952eac721cff9e8db671353847099801d9b0
 }
 
 /* Responsive */
 @media (max-width: 768px) {
+<<<<<<< HEAD
     .search-header {
         padding: 18px 0 20px;
     }
 
+=======
+>>>>>>> f488952eac721cff9e8db671353847099801d9b0
     .filter-pills {
         overflow-x: auto;
         flex-wrap: nowrap;
         padding-bottom: 8px;
         -webkit-overflow-scrolling: touch;
+<<<<<<< HEAD
         scrollbar-width: none;
     }
 
     .filter-pills::-webkit-scrollbar {
         display: none;
+=======
+>>>>>>> f488952eac721cff9e8db671353847099801d9b0
     }
 
     .pill {
         flex-shrink: 0;
     }
 }
+<<<<<<< HEAD
 
 @media (max-width: 480px) {
     .search-input-wrapper input {
@@ -170,3 +209,5 @@
         font-size: 11.5px;
     }
 }
+=======
+>>>>>>> f488952eac721cff9e8db671353847099801d9b0
