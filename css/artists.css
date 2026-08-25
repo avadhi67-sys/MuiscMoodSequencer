@@ -1,0 +1,454 @@
+/* ==========================================================================
+   SONICFLOW ARTISTS STYLES
+   Dark & Light Mode • Navy, Purple, Sage Green & Wine
+   Palette: #0D1445 • #BFBFDB • #C2D9D1 • #FCF0D6 • #E6DFE2
+   ========================================================================== */
+
+/* Header */
+.artists-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 24px 0 28px;
+}
+
+.artists-header h1 {
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--text);
+}
+
+.artists-header h1 span {
+    color: #FCF0D6;
+}
+
+.artists-description {
+    max-width: 520px;
+    margin-top: 10px;
+    color: var(--text-muted);
+    font-size: 13.5px;
+    line-height: 1.6;
+}
+
+/* Stats Row */
+.artists-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 36px;
+}
+
+/* Artist Grid */
+.artists-section {
+    padding-bottom: 120px;
+}
+
+.artists-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.artists-section-header h2 {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--text);
+}
+
+.artist-count {
+    font-size: 11px;
+    font-weight: 700;
+    color: #FCF0D6;
+    background: var(--bg-surface);
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    border: 1px solid #FCF0D6;
+}
+
+.artist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px;
+}
+
+/* Artist Card */
+.artist-card {
+    padding: 24px 20px;
+    border-radius: var(--radius-md);
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+    transition: var(--transition);
+    position: relative;
+}
+
+.artist-card:hover {
+    background: var(--bg-surface-hover);
+    border-color: #FCF0D6;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.artist-avatar-wrap {
+    position: relative;
+}
+
+.artist-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius-full);
+    background: #BFBFDB;
+    color: #0D1445;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: 800;
+    border: 2px solid var(--border);
+    transition: var(--transition);
+    overflow: hidden;
+    position: relative;
+}
+
+.artist-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: var(--radius-full);
+}
+
+.artist-card:hover .artist-avatar {
+    background: #FCF0D6;
+    color: #FFFFFF;
+    border-color: #FCF0D6;
+    transform: scale(1.05);
+}
+
+.artist-badge-count {
+    position: absolute;
+    bottom: -4px;
+    right: -4px;
+    background: #0D1445;
+    color: #FFFFFF;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: var(--radius-full);
+    border: 1.5px solid var(--bg-surface);
+    z-index: 2;
+}
+
+/* Image Upload Preview for Add Artist */
+.artist-image-preview-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 6px;
+}
+
+.artist-image-preview {
+    width: 72px;
+    height: 72px;
+    border-radius: var(--radius-full);
+    background: var(--bg-surface-hover);
+    border: 2px dashed var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: var(--text-dim);
+    overflow: hidden;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.artist-image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-full);
+}
+
+[data-theme="dark"] .artist-badge-count {
+    background: #FCF0D6;
+    border-color: var(--bg-surface);
+}
+
+.artist-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+}
+
+.artist-info h3 {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: -0.01em;
+}
+
+.artist-info p {
+    font-size: 11.5px;
+    color: var(--text-dim);
+}
+
+/* Mood Badges List */
+.artist-moods {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    width: 100%;
+}
+
+.artist-mood-tag {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-surface-hover);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+}
+
+[data-theme="dark"] .artist-mood-tag {
+    background: var(--bg-elevated);
+    color: var(--text);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Artist Actions */
+.artist-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    margin-top: auto;
+}
+
+.artist-play-btn {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 9px 12px;
+    border-radius: var(--radius-sm);
+    background: #FCF0D6;
+    color: #B40023;
+    font-size: 12px;
+    font-weight: 800;
+    transition: var(--transition);
+    border: 1.5px solid #FCF0D6;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(180, 0, 35, 0.2);
+}
+
+.artist-play-btn span {
+    color: #B40023;
+}
+
+.artist-play-btn:hover {
+    background: #FFFFFF;
+    border-color: #FFFFFF;
+    color: #B40023;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(180, 0, 35, 0.35);
+}
+
+.artist-view-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 9px 14px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-surface);
+    color: var(--text);
+    border: 1.5px solid var(--border);
+    font-size: 12px;
+    font-weight: 700;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.artist-view-btn:hover {
+    background: var(--bg-surface-hover);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+[data-theme="dark"] .artist-view-btn {
+    background: var(--bg-surface-hover);
+    border-color: rgba(255, 255, 255, 0.35);
+    color: #FFFFFF;
+}
+
+[data-theme="dark"] .artist-view-btn:hover {
+    background: var(--bg-elevated);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* Modal / Track Drawer */
+.artist-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(13, 20, 69, 0.65);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.artist-modal {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 620px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-lg);
+    animation: modalFadeIn 0.25s ease forwards;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.artist-modal-header {
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+}
+
+.artist-modal-header h3 {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--text);
+}
+
+.artist-modal-close {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    background: var(--bg-surface-hover);
+    color: var(--text);
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.artist-modal-close:hover {
+    background: var(--danger);
+    color: #FFFFFF;
+}
+
+.artist-modal-body {
+    padding: 20px 24px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.artist-track-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-surface-hover);
+    border: 1px solid var(--border);
+    transition: var(--transition);
+}
+
+.artist-track-item:hover {
+    border-color: var(--accent);
+}
+
+.artist-track-item-info strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.artist-track-item-info span {
+    font-size: 11px;
+    color: var(--text-dim);
+}
+
+@media (max-width: 768px) {
+    .artists-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 18px 0 20px;
+    }
+
+    .artists-stats {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-bottom: 24px;
+    }
+
+    .artist-modal-overlay {
+        padding: 12px;
+    }
+
+    .artist-modal {
+        width: 100%;
+        max-height: 85vh;
+    }
+
+    .artist-modal-header,
+    .artist-modal-body {
+        padding: 16px 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .artist-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .artist-image-preview-container {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .artist-image-preview-container .audio-upload {
+        width: 100%;
+    }
+}

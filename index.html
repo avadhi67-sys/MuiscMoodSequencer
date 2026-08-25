@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SonicFlow • Music That Flows</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Playfair+Display:ital,wght@0,600..900;1,600..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home.css">
+    <script src="js/theme.js"></script>
+</head>
+
+<body>
+
+<!-- Background Subtle Mesh -->
+<div class="background-orb orb-one"></div>
+<div class="background-orb orb-two"></div>
+<div class="background-orb orb-three"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+    <!-- Brand -->
+    <div class="brand">
+        <div class="brand-icon">♪</div>
+        <div>
+            <h2>Sonic<span>Flow</span></h2>
+            <small>Music Intelligence</small>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navigation">
+        <p class="nav-title">Menu</p>
+        <a href="index.html" class="nav-item active">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> Home
+        </a>
+        <a href="search.html" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg> Search
+        </a>
+
+        <p class="nav-title music-title">Your Music</p>
+        <a href="library.html" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg> My Library
+        </a>
+        <a href="artists.html" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 8-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12"/><circle cx="17" cy="7" r="5"/></svg> My Artists
+        </a>
+        <a href="add-song.html" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg> Add Song
+        </a>
+        <a href="add-artist.html" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg> Add Artist
+        </a>
+
+        <p class="nav-title music-title">SonicFlow</p>
+        <a href="sequencer.html" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5v14M22 8v8M7 5v14M2 8v8"/></svg> Mood Flow
+        </a>
+    </nav>
+
+    <!-- Sidebar Bottom -->
+    <div class="sidebar-bottom">
+        <div class="sidebar-player">
+            <div class="mini-cover">♪</div>
+            <div class="mini-info">
+                <strong>Your Flow</strong>
+                <span>Ready to sequence</span>
+            </div>
+            <div class="mini-wave">≋</div>
+        </div>
+
+        <div class="sidebar-account">
+            <div class="account-avatar" id="sidebarAvatar">U</div>
+            <div class="account-details">
+                <strong id="sidebarName">User</strong>
+                <span>Account</span>
+            </div>
+            <button id="logoutButton" class="logout-button" title="Log out">Logout</button>
+        </div>
+    </div>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+    <!-- Topbar -->
+    <header class="topbar">
+        <button class="sidebar-toggle-btn" id="sidebarToggleBtn" title="Toggle Sidebar">
+            <span>☰</span>
+        </button>
+        <div class="mobile-brand">
+            Sonic<span>Flow</span>
+        </div>
+        <div class="topbar-quote-wrapper" id="topbarQuoteWrapper">
+            <span class="quote-sparkle">✦</span>
+            <div class="topbar-quote-content" id="topbarQuoteContent">
+                <span class="topbar-quote" id="topbarQuote">"Where words fail, music speaks."</span>
+                <span class="quote-author" id="topbarQuoteAuthor">— Hans Christian Andersen</span>
+            </div>
+        </div>
+        <div class="topbar-actions">
+            <div class="profile">
+                <div class="profile-avatar" id="profileAvatar">U</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <!-- Ambient Rotating Vinyl Background -->
+        <div class="hero-vinyl-bg" aria-hidden="true">
+            <div class="hero-vinyl-disk">
+                <div class="vinyl-grooves"></div>
+                <div class="vinyl-sheen"></div>
+                <div class="vinyl-center-label">
+                    <span class="vinyl-icon">✦</span>
+                    <span class="vinyl-brand">SONICFLOW</span>
+                    <div class="vinyl-spindle"></div>
+                </div>
+            </div>
+            <div class="hero-vinyl-glow"></div>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="pulse-dot"></span>
+                SMART MOOD SEQUENCING ENGINE
+            </div>
+            <h1>
+                Music that seamlessly<br>
+                <span>moves with you.</span>
+            </h1>
+            <p>
+                SonicFlow analyzes your library through <strong>mood, energy, and tempo</strong> to generate harmonic playlist sequences where every track naturally flows into the next.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="sequencer.html" class="primary-button">
+                    <span>✦</span> Create My Flow
+                </a>
+                <a href="add-song.html" class="secondary-button">
+                    <span>＋</span> Add Music
+                </a>
+                <a href="library.html" class="secondary-button">
+                    View Library
+                </a>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <strong id="heroTotalSongs">0 Tracks</strong>
+                    <span>In Library</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <strong>100%</strong>
+                    <span>Harmonic Match</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <strong>Zero</strong>
+                    <span>Abrupt Transitions</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Spectrum Visualizer Showcase -->
+        <div class="hero-showcase">
+            <div class="showcase-card" title="Click to modulate audio spectrum">
+                <div class="showcase-header">
+                    <div class="track-badge">Engine Active</div>
+                    <div class="bpm-indicator">128 BPM</div>
+                </div>
+
+                <div class="visual-wave">
+                    <span style="--h: 24px; --delay: 0.1s"></span>
+                    <span style="--h: 48px; --delay: 0.2s"></span>
+                    <span style="--h: 36px; --delay: 0.15s"></span>
+                    <span style="--h: 64px; --delay: 0.3s"></span>
+                    <span style="--h: 82px; --delay: 0.25s"></span>
+                    <span style="--h: 52px; --delay: 0.35s"></span>
+                    <span style="--h: 96px; --delay: 0.4s"></span>
+                    <span style="--h: 70px; --delay: 0.1s"></span>
+                    <span style="--h: 85px; --delay: 0.3s"></span>
+                    <span style="--h: 40px; --delay: 0.2s"></span>
+                    <span style="--h: 60px; --delay: 0.45s"></span>
+                    <span style="--h: 32px; --delay: 0.25s"></span>
+                </div>
+
+                <div class="showcase-footer">
+                    <div class="track-info-mini">
+                        <strong>Dreamy Odyssey</strong>
+                        <span>Atmospheric • Energy 7/10</span>
+                    </div>
+                    <div class="match-score">
+                        <span>Transition Score</span>
+                        <strong>99% Match</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIVE LIBRARY METRICS BAR -->
+    <div class="metrics-ribbon">
+        <div class="metric-card">
+            <div class="metric-icon">♫</div>
+            <div class="metric-info">
+                <span>Stored Tracks</span>
+                <strong id="metricSongsCount">0</strong>
+            </div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-icon">⚡</div>
+            <div class="metric-info">
+                <span>Dominant Vibe</span>
+                <strong id="metricDominantMood">Chill</strong>
+            </div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-icon">⏱</div>
+            <div class="metric-info">
+                <span>Average Tempo</span>
+                <strong id="metricAvgBpm">120 BPM</strong>
+            </div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-icon">✦</div>
+            <div class="metric-info">
+                <span>Flow Index</span>
+                <strong id="metricFlowScore">98%</strong>
+            </div>
+        </div>
+        <div class="metric-action">
+            <div class="engine-live-badge">
+                <span class="live-dot"></span>
+                <span>HARMONIC ENGINE ACTIVE</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- INSTANT FLOW STUDIO (INTERACTIVE GENERATOR WIDGET) -->
+    <section class="section-block">
+        <div class="section-heading">
+            <div>
+                <span class="section-tag">QUICK MIX STUDIO</span>
+                <h2>Instant Mood Flow Generator</h2>
+            </div>
+            <a href="sequencer.html" class="section-link">Advanced sequencer →</a>
+        </div>
+
+        <div class="flow-studio-card">
+            <div class="studio-grid">
+                <div class="studio-controls">
+                    <h3>1. Select Desired Emotion & Energy</h3>
+                    <p>Adjust the vibe parameters below. SonicFlow instantly computes the harmonic transition profile.</p>
+
+                    <div class="flow-mood-pills">
+                        <button class="flow-mood-pill active" data-mood="Chill">
+                            <span class="pill-icon">☾</span> Chill
+                        </button>
+                        <button class="flow-mood-pill" data-mood="Happy">
+                            <span class="pill-icon">☀</span> Happy
+                        </button>
+                        <button class="flow-mood-pill" data-mood="Energetic">
+                            <span class="pill-icon">⚡</span> Energetic
+                        </button>
+                        <button class="flow-mood-pill" data-mood="Dreamy">
+                            <span class="pill-icon">✦</span> Dreamy
+                        </button>
+                        <button class="flow-mood-pill" data-mood="Focus">
+                            <span class="pill-icon">◎</span> Focus
+                        </button>
+                    </div>
+
+                    <div class="studio-slider-wrap">
+                        <div class="slider-header">
+                            <span>Target Energy Level</span>
+                            <strong id="studioEnergyDisplay">6/10</strong>
+                        </div>
+                        <input type="range" min="1" max="10" value="6" class="studio-range-input" id="studioEnergySlider">
+                    </div>
+                </div>
+
+                <div class="studio-predictions">
+                    <div class="prediction-item">
+                        <span>Predicted Continuity</span>
+                        <strong class="highlight-red" id="studioMatchScore">98%</strong>
+                    </div>
+                    <div class="prediction-item">
+                        <span>Target Tempo Window</span>
+                        <strong id="studioTargetBpm">85 - 95 BPM</strong>
+                    </div>
+                    <div class="prediction-item">
+                        <span>Harmonic Curve</span>
+                        <strong>Linear Ramp</strong>
+                    </div>
+                    <button class="btn-launch-flow" id="btnLaunchStudioFlow">
+                        <span>✦</span> Launch Custom Mood Flow
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- HARMONIC TRANSITION RADAR (SCIENCE OF FLOW) -->
+    <section class="section-block">
+        <div class="section-heading">
+            <div>
+                <span class="section-tag">THE ALGORITHM</span>
+                <h2>Harmonic Transition Matrix</h2>
+            </div>
+        </div>
+
+        <div class="harmonic-matrix-card">
+            <div class="radar-grid">
+                <div class="radar-nodes">
+                    <div class="radar-mood-node active" data-radar="chill">
+                        <div class="node-header">
+                            <span class="node-title">☾ Chillout</span>
+                            <span class="node-bpm">75-95 BPM</span>
+                        </div>
+                        <div class="node-spectrum"></div>
+                    </div>
+
+                    <div class="radar-mood-node" data-radar="dreamy">
+                        <div class="node-header">
+                            <span class="node-title">✦ Dreamy</span>
+                            <span class="node-bpm">90-110 BPM</span>
+                        </div>
+                        <div class="node-spectrum"></div>
+                    </div>
+
+                    <div class="radar-mood-node" data-radar="happy">
+                        <div class="node-header">
+                            <span class="node-title">☀ Happy</span>
+                            <span class="node-bpm">110-126 BPM</span>
+                        </div>
+                        <div class="node-spectrum"></div>
+                    </div>
+
+                    <div class="radar-mood-node" data-radar="energetic">
+                        <div class="node-header">
+                            <span class="node-title">⚡ Energetic</span>
+                            <span class="node-bpm">126-145 BPM</span>
+                        </div>
+                        <div class="node-spectrum"></div>
+                    </div>
+                </div>
+
+                <div class="radar-detail-box" id="radarDetailBox">
+                    <h4>Chill Harmonic Anchor</h4>
+                    <p>Low energy baseline (70-95 BPM). Transitioning from Chill to Dreamy yields a 99% Harmonic Match with sub-bass frequency alignment.</p>
+                    <div class="radar-compat-tag">99% to Dreamy • 92% to Happy</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENGINE COMPARISON: SHUFFLE VS SONICFLOW -->
+    <section class="section-block">
+        <div class="section-heading">
+            <div>
+                <span class="section-tag">INTELLIGENCE</span>
+                <h2>Why SonicFlow is Different</h2>
+            </div>
+        </div>
+
+        <div class="comparison-grid">
+            <div class="comparison-card">
+                <span class="comp-badge legacy">Standard Shuffle</span>
+                <h3>Randomized Playlist Playback</h3>
+                <ul class="comparison-list">
+                    <li><span class="icon-bad">✕</span> Jarring ±50 BPM tempo collisions</li>
+                    <li><span class="icon-bad">✕</span> Emotional whiplash between energetic and melancholy</li>
+                    <li><span class="icon-bad">✕</span> Incompatible key harmonics causing cognitive friction</li>
+                    <li><span class="icon-bad">✕</span> Constant need to manually skip songs</li>
+                </ul>
+            </div>
+
+            <div class="comparison-card highlight">
+                <span class="comp-badge sonic">SonicFlow Engine</span>
+                <h3>Harmonic Acoustic Trajectory</h3>
+                <ul class="comparison-list">
+                    <li><span class="icon-good">✓</span> Seamless tempo gradients with subtle BPM step locks</li>
+                    <li><span class="icon-good">✓</span> Mood-continuity vectors that preserve mental flow state</li>
+                    <li><span class="icon-good">✓</span> Adaptive energy ramping tailored to your day</li>
+                    <li><span class="icon-good">✓</span> Zero abrupt stops or jarring emotional shifts</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- MOOD EXPLORER SECTION -->
+    <section class="section-block">
+        <div class="section-heading">
+            <div>
+                <span class="section-tag">VIBE EXPLORER</span>
+                <h2>Explore by Emotion</h2>
+            </div>
+            <a href="search.html" class="section-link">Explore all vibes →</a>
+        </div>
+
+        <div class="mood-grid">
+            <a href="search.html?mood=Happy" class="mood-card happy">
+                <div class="mood-icon">☀</div>
+                <div class="mood-info">
+                    <h3>Happy</h3>
+                    <p>Bright, upbeat & euphoric</p>
+                </div>
+                <span class="mood-arrow">→</span>
+            </a>
+
+            <a href="search.html?mood=Chill" class="mood-card chill">
+                <div class="mood-icon">☾</div>
+                <div class="mood-info">
+                    <h3>Chill</h3>
+                    <p>Calm, lo-fi & peaceful</p>
+                </div>
+                <span class="mood-arrow">→</span>
+            </a>
+
+            <a href="search.html?mood=Energetic" class="mood-card energetic">
+                <div class="mood-icon">⚡</div>
+                <div class="mood-info">
+                    <h3>Energetic</h3>
+                    <p>High tempo, powerful & driving</p>
+                </div>
+                <span class="mood-arrow">→</span>
+            </a>
+
+            <a href="search.html?mood=Dreamy" class="mood-card dreamy">
+                <div class="mood-icon">✦</div>
+                <div class="mood-info">
+                    <h3>Dreamy</h3>
+                    <p>Atmospheric, spacious & melodic</p>
+                </div>
+                <span class="mood-arrow">→</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS PIPELINE -->
+    <section class="section-block">
+        <div class="section-heading">
+            <div>
+                <span class="section-tag">ARCHITECTURE</span>
+                <h2>The SonicFlow transition engine</h2>
+            </div>
+        </div>
+
+        <div class="flow-pipeline">
+            <div class="pipeline-step">
+                <div class="step-num">01</div>
+                <h3>Add Music</h3>
+                <p>Import songs with custom metadata including mood, energy level (1-10), and BPM tempo.</p>
+            </div>
+            <div class="pipeline-divider"></div>
+            <div class="pipeline-step">
+                <div class="step-num">02</div>
+                <h3>Feature Analysis</h3>
+                <p>Each track is mapped into an acoustic vector space comparing tonal and tempo differences.</p>
+            </div>
+            <div class="pipeline-divider"></div>
+            <div class="pipeline-step">
+                <div class="step-num">03</div>
+                <h3>Sequential Pathing</h3>
+                <p>Our algorithm constructs smooth harmonic transition trajectories without abrupt energy shocks.</p>
+            </div>
+            <div class="pipeline-divider"></div>
+            <div class="pipeline-step">
+                <div class="step-num">04</div>
+                <h3>Seamless Journey</h3>
+                <p>Listen to an uninterrupted flow of tracks curated for your current emotional state.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="home-footer">
+        <div class="footer-top">
+            <div class="footer-brand-col">
+                <div class="footer-brand">
+                    <div class="footer-brand-icon">♪</div>
+                    <h2>Sonic<span>Flow</span></h2>
+                </div>
+                <p class="footer-tagline">
+                    Harmonic mood sequencing engineered for uninterrupted acoustic & emotional journeys.
+                </p>
+                <div class="footer-status-pill">
+                    <span class="footer-status-dot"></span>
+                    <span>Acoustic Engine Operational</span>
+                </div>
+            </div>
+
+            <div class="footer-links-grid">
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="library.html">Music Library</a></li>
+                        <li><a href="sequencer.html">Mood Sequencer</a></li>
+                        <li><a href="artists.html">Artists</a></li>
+                        <li><a href="search.html">Search Catalog</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Studio Tools</h4>
+                    <ul>
+                        <li><a href="add-song.html">Import Track</a></li>
+                        <li><a href="add-artist.html">Register Artist</a></li>
+                        <li><a href="sequencer.html">Smart Shuffle</a></li>
+                        <li><a href="sequencer.html">Harmonic Matrix</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-copyright">
+                © 2026 <strong>SonicFlow</strong>. All rights reserved. Crafted for pure musical momentum.
+            </div>
+            <button class="footer-back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to Top">
+                <span>Back to Top</span> ↑
+            </button>
+        </div>
+    </footer>
+</main>
+
+<script src="js/storage.js"></script>
+<script src="js/songs.js"></script>
+<script src="js/app.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>

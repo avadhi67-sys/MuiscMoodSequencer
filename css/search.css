@@ -1,0 +1,172 @@
+/* ==========================================================================
+   SONICFLOW SEARCH STYLES
+   Navy, Purple, Sage Green & Wine
+   Palette: #0D1445 • #BFBFDB • #C2D9D1 • #FCF0D6 • #E6DFE2
+   ========================================================================== */
+
+.search-header {
+    padding: 24px 0 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.search-header h1 {
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--text);
+}
+
+.search-header h1 span {
+    color: #FCF0D6;
+}
+
+.search-description {
+    max-width: 520px;
+    color: var(--text-muted);
+    font-size: 13.5px;
+    line-height: 1.6;
+}
+
+/* Search Bar Wrapper */
+.search-bar-container {
+    max-width: 680px;
+    margin-top: 6px;
+}
+
+.search-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.search-input-wrapper .search-icon {
+    position: absolute;
+    left: 16px;
+    color: #FCF0D6;
+    font-size: 16px;
+    pointer-events: none;
+}
+
+.search-input-wrapper input {
+    width: 100%;
+    padding: 14px 44px 14px 44px;
+    border-radius: var(--radius-md);
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 14px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.search-input-wrapper input:focus {
+    background: var(--bg-surface-hover);
+    border-color: #FCF0D6;
+}
+
+.clear-button {
+    position: absolute;
+    right: 14px;
+    width: 24px;
+    height: 24px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    background: var(--bg-surface-hover);
+    color: var(--text-dim);
+    font-size: 11px;
+    transition: var(--transition);
+}
+
+.clear-button:hover {
+    color: #FFFFFF;
+    background: var(--danger);
+}
+
+/* Mood Filter Pills */
+.filter-pills {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+}
+
+.pill {
+    padding: 8px 16px;
+    border-radius: var(--radius-full);
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 12.5px;
+    font-weight: 700;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.pill:hover {
+    background: var(--bg-surface-hover);
+    color: var(--text);
+    border-color: #FCF0D6;
+}
+
+[data-theme="dark"] .pill {
+    background: var(--bg-surface-hover);
+    color: var(--text);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+[data-theme="dark"] .pill:hover {
+    background: var(--bg-elevated);
+    border-color: var(--accent);
+    color: #FFFFFF;
+}
+
+.pill.active {
+    background: #FCF0D6 !important;
+    color: #B40023 !important;
+    border-color: #FCF0D6 !important;
+    font-weight: 800;
+    box-shadow: 0 0 14px rgba(180, 0, 35, 0.25);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .search-header {
+        padding: 18px 0 20px;
+    }
+
+    .filter-pills {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 8px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .filter-pills::-webkit-scrollbar {
+        display: none;
+    }
+
+    .pill {
+        flex-shrink: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-input-wrapper input {
+        padding: 12px 38px 12px 38px;
+        font-size: 13px;
+    }
+
+    .pill {
+        padding: 6px 12px;
+        font-size: 11.5px;
+    }
+}
