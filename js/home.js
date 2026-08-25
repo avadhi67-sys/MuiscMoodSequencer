@@ -10,10 +10,7 @@ console.log("🚀 SonicFlow Home Controller Initialized");
 // ============================================
 
 document.addEventListener("DOMContentLoaded", async function () {
-<<<<<<< HEAD
     checkWelcomeCelebration();
-=======
->>>>>>> f488952eac721cff9e8db671353847099801d9b0
     await initHomeMetrics();
     initInstantFlowStudio();
     initHeroShowcaseInteraction();
@@ -380,7 +377,6 @@ function initScrollAnimations() {
         }
     }, { passive: true });
 }
-<<<<<<< HEAD
 
 // ============================================
 // MINIMAL & AESTHETIC LOGIN/SIGNUP ENTRANCE
@@ -466,5 +462,3 @@ function escapeHTML(str) {
         }[tag] || tag)
     );
 }
-=======
->>>>>>> f488952eac721cff9e8db671353847099801d9b0

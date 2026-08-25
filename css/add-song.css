@@ -1,12 +1,7 @@
 /* ==========================================================================
    SONICFLOW ADD SONG STYLES
-<<<<<<< HEAD
    Navy, Purple, Sage Green & Wine
    Palette: #0D1445 • #BFBFDB • #C2D9D1 • #FCF0D6 • #E6DFE2
-=======
-   Navy, Purple, Sage Green, Berry Red & Blush Pink
-   Palette: #0D1445 • #BFBFDB • #C2D9D1 • #AD525E • #E0D6D9
->>>>>>> f488952eac721cff9e8db671353847099801d9b0
    ========================================================================== */
 
 /* ==========================================================================
@@ -27,11 +22,7 @@
 }
 
 .add-song-header h1 span {
-<<<<<<< HEAD
     color: #FCF0D6;
-=======
-    color: #AD525E;
->>>>>>> f488952eac721cff9e8db671353847099801d9b0
 }
 
 .section-description {
@@ -65,11 +56,7 @@
 }
 
 .form-card:hover, .info-card:hover {
-<<<<<<< HEAD
     border-color: #FCF0D6;
-=======
-    border-color: #AD525E;
->>>>>>> f488952eac721cff9e8db671353847099801d9b0
 }
 
 .form-header {
@@ -88,20 +75,12 @@
     align-items: center;
     justify-content: center;
     border-radius: var(--radius-sm);
-<<<<<<< HEAD
     background: #FCF0D6;
     color: #B40023;
     font-size: 20px;
     font-weight: 800;
     flex-shrink: 0;
     box-shadow: 0 4px 14px rgba(180, 0, 35, 0.2);
-=======
-    background: #AD525E;
-    color: #FFFFFF;
-    font-size: 20px;
-    font-weight: 800;
-    flex-shrink: 0;
->>>>>>> f488952eac721cff9e8db671353847099801d9b0
 }
 
 .form-header h2 {
@@ -113,11 +92,7 @@
 
 .form-header p {
     font-size: 12px;
-<<<<<<< HEAD
     color: var(--text-muted);
-=======
-    color: #AD525E;
->>>>>>> f488952eac721cff9e8db671353847099801d9b0
     margin-top: 2px;
 }
 
@@ -162,13 +137,8 @@
 .range-value {
     font-size: 11px;
     font-weight: 800;
-<<<<<<< HEAD
     color: #B40023;
     background: #FCF0D6;
-=======
-    color: #FFFFFF;
-    background: #AD525E;
->>>>>>> f488952eac721cff9e8db671353847099801d9b0
     padding: 3px 10px;
     border-radius: var(--radius-full);
 }
@@ -188,11 +158,7 @@
 
 .form-group input:focus,
 .form-group select:focus {
-<<<<<<< HEAD
     border-color: #FCF0D6;
-=======
-    border-color: #AD525E;
->>>>>>> f488952eac721cff9e8db671353847099801d9b0
 }
 
 /* Range Slider */
@@ -201,11 +167,7 @@
     height: 5px;
     appearance: none;
     -webkit-appearance: none;
-<<<<<<< HEAD
     background: #FCF0D6;
-=======
-    background: #AD525E;
->>>>>>> f488952eac721cff9e8db671353847099801d9b0
     border-radius: var(--radius-full);
     cursor: pointer;
     margin: 8px 0;
@@ -246,21 +208,13 @@
 }
 
 .audio-upload:hover {
-<<<<<<< HEAD
     border-color: #FCF0D6;
-=======
-    border-color: #AD525E;
->>>>>>> f488952eac721cff9e8db671353847099801d9b0
     background: var(--bg-surface);
 }
 
 [data-theme="dark"] .audio-upload {
     background: var(--bg-surface);
-<<<<<<< HEAD
     border-color: rgba(255, 255, 255, 0.3);
-=======
-    border-color: rgba(191, 191, 219, 0.3);
->>>>>>> f488952eac721cff9e8db671353847099801d9b0
 }
 
 [data-theme="dark"] .audio-upload:hover {
@@ -275,20 +229,12 @@
     align-items: center;
     justify-content: center;
     border-radius: var(--radius-sm);
-<<<<<<< HEAD
     background: #FCF0D6;
     color: #B40023;
     font-size: 18px;
     font-weight: 800;
     flex-shrink: 0;
     box-shadow: 0 2px 8px rgba(180, 0, 35, 0.2);
-=======
-    background: #AD525E;
-    color: #FFFFFF;
-    font-size: 18px;
-    font-weight: 800;
-    flex-shrink: 0;
->>>>>>> f488952eac721cff9e8db671353847099801d9b0
 }
 
 .upload-text strong {
@@ -300,11 +246,7 @@
 
 .upload-text span {
     font-size: 11px;
-<<<<<<< HEAD
     color: var(--text-muted);
-=======
-    color: #AD525E;
->>>>>>> f488952eac721cff9e8db671353847099801d9b0
 }
 
 /* Submit Button */
@@ -316,20 +258,14 @@
     gap: 8px;
     padding: 14px;
     border-radius: var(--radius-sm);
-<<<<<<< HEAD
     background: #FCF0D6;
     color: #B40023;
-=======
-    background: #AD525E;
-    color: #FFFFFF;
->>>>>>> f488952eac721cff9e8db671353847099801d9b0
     font-size: 14px;
     font-weight: 800;
     margin-top: 10px;
     transition: var(--transition);
     border: none;
     cursor: pointer;
-<<<<<<< HEAD
     box-shadow: 0 4px 14px rgba(180, 0, 35, 0.25);
 }
 
@@ -342,14 +278,6 @@
     color: #B40023;
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(180, 0, 35, 0.4);
-=======
-}
-
-.add-song-button:hover {
-    background: #933E4A;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 14px rgba(173, 82, 94, 0.4);
->>>>>>> f488952eac721cff9e8db671353847099801d9b0
 }
 
 /* Form Message */
@@ -455,58 +383,56 @@
 @media (max-width: 900px) {
     .add-song-container {
         grid-template-columns: 1fr;
-<<<<<<< HEAD
         gap: 20px;
-        padding-bottom: 40px;
-=======
->>>>>>> f488952eac721cff9e8db671353847099801d9b0
     }
 }
 
 @media (max-width: 600px) {
-<<<<<<< HEAD
     .add-song-header {
-        padding: 18px 0 20px;
+        padding: 16px 0 20px;
+    }
+
+    .add-song-header h1 {
+        font-size: clamp(24px, 6vw, 32px);
     }
 
     .form-grid {
         grid-template-columns: 1fr;
         gap: 0;
-=======
-    .form-grid {
-        grid-template-columns: 1fr;
->>>>>>> f488952eac721cff9e8db671353847099801d9b0
     }
 
     .form-card,
     .info-card {
-<<<<<<< HEAD
         padding: 20px 16px;
     }
 
     .form-header {
         gap: 12px;
-        padding-bottom: 16px;
         margin-bottom: 18px;
+        padding-bottom: 16px;
     }
 
     .form-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 17px;
+        width: 38px;
+        height: 38px;
+        font-size: 16px;
     }
 
     .audio-upload {
-        padding: 14px 12px;
+        padding: 14px;
         gap: 10px;
     }
 
     .upload-icon {
         width: 36px;
         height: 36px;
-        font-size: 16px;
-=======
-        padding: 20px;
->>>>>>> f488952eac721cff9e8db671353847099801d9b0
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 380px) {
+    .form-card,
+    .info-card {
+        padding: 16px 12px;
     }
 }

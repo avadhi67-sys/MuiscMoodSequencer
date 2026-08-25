@@ -338,7 +338,6 @@ async function showSongDatabase() {
 // ============================================
 // CURATED RANDOM CARD COVERS & ARTWORK
 // ============================================
-<<<<<<< HEAD
 // CUSTOM COVER ARTWORK COLLECTION
 // 5 User-Uploaded Unique Aesthetic Covers
 // ============================================
@@ -360,96 +359,14 @@ function getSongCoverImage(song) {
     }
 
     // Deterministic pseudo-random distribution across the 5 uploaded covers
-=======
-
-const MOOD_COVERS = {
-    Romantic: [
-        "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1520523839898-5071270868f7?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1517230878791-4d28214057c2?w=600&auto=format&fit=crop&q=80"
-    ],
-    Energetic: [
-        "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=600&auto=format&fit=crop&q=80"
-    ],
-    Calm: [
-        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?w=600&auto=format&fit=crop&q=80"
-    ],
-    Dreamy: [
-        "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&auto=format&fit=crop&q=80"
-    ],
-    Happy: [
-        "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1487180144351-b8472da7d491?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600&auto=format&fit=crop&q=80"
-    ],
-    Emotional: [
-        "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1445985543469-433ecba627a0?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1465821185615-20b3c2fbf41b?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1526478806334-5fd488fcaabc?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1485579149621-3123dd979885?w=600&auto=format&fit=crop&q=80"
-    ],
-    Melancholic: [
-        "https://images.unsplash.com/photo-1445985543469-433ecba627a0?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80"
-    ],
-    Intense: [
-        "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=600&auto=format&fit=crop&q=80"
-    ],
-    default: [
-        "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&auto=format&fit=crop&q=80",
-        "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=600&auto=format&fit=crop&q=80"
-    ]
-};
-
-function getSongCoverImage(song) {
-    if (!song) return "";
-    if (song.image && typeof song.image === "string" && song.image.trim() !== "") return song.image;
-    if (song.cover && typeof song.cover === "string" && song.cover.trim() !== "") return song.cover;
-    if (song.artwork && typeof song.artwork === "string" && song.artwork.trim() !== "") return song.artwork;
-
-    const mood = (song.mood || "").trim();
-    const pool = MOOD_COVERS[mood] || MOOD_COVERS.default;
-
->>>>>>> f488952eac721cff9e8db671353847099801d9b0
     const key = `${song.id || ""}_${song.title || ""}_${song.artist || ""}`;
     let hash = 0;
     for (let i = 0; i < key.length; i++) {
         hash = (hash << 5) - hash + key.charCodeAt(i);
         hash |= 0;
     }
-<<<<<<< HEAD
     const index = Math.abs(hash) % CUSTOM_COVERS.length;
     return CUSTOM_COVERS[index];
-=======
-    const index = Math.abs(hash) % pool.length;
-    return pool[index];
->>>>>>> f488952eac721cff9e8db671353847099801d9b0
 }
 
 // ============================================
