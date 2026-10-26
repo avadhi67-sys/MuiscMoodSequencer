@@ -182,13 +182,28 @@
                             Account Type / Role
                         </label>
 
-                        <select
-                            id="signupRole"
-                            style="width: 100%; padding: 12px 14px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 10px; color: #fff; font-size: 0.95rem; outline: none;"
-                        >
-                            <option value="user" style="background: #18181c; color: #fff;" selected>🎧 Listener (Search & Listen to Music)</option>
-                            <option value="admin" style="background: #18181c; color: #fff;">👑 Studio Administrator (Add, Edit & Delete Catalog)</option>
-                        </select>
+                        <div class="role-selector-grid">
+                            <div class="role-card active" data-role="user" id="roleCardUser" role="button" tabindex="0">
+                                <span class="role-badge">✓ Active</span>
+                                <div class="role-card-icon">🎧</div>
+                                <div class="role-card-text">
+                                    <div class="role-card-title">Listener (User)</div>
+                                    <div class="role-card-desc">Search music, filter moods & stream audio</div>
+                                </div>
+                            </div>
+
+                            <div class="role-card" data-role="admin" id="roleCardAdmin" role="button" tabindex="0">
+                                <span class="role-badge">✓ Active</span>
+                                <div class="role-card-icon">👑</div>
+                                <div class="role-card-text">
+                                    <div class="role-card-title">Studio Admin</div>
+                                    <div class="role-card-desc">Add, edit, delete songs & view analytics</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Hidden input storing selected role value for form submission -->
+                        <input type="hidden" id="signupRole" value="user">
 
                     </div>
 

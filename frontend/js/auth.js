@@ -40,6 +40,29 @@ document.addEventListener("DOMContentLoaded", function () {
         const message = "⚠️ Administrator access is required for that action.";
         if (loginMsg) showAuthMessage(loginMsg, message, "error");
     }
+
+    // Role Card Selection Feedback (Active Border & Glow)
+    const roleCards = document.querySelectorAll(".role-card");
+    const hiddenRoleInput = document.getElementById("signupRole");
+
+    if (roleCards.length > 0 && hiddenRoleInput) {
+        roleCards.forEach(function (card) {
+            function selectThisRole() {
+                roleCards.forEach(function (c) { c.classList.remove("active"); });
+                card.classList.add("active");
+                const chosen = card.getAttribute("data-role") || "user";
+                hiddenRoleInput.value = chosen;
+            }
+
+            card.addEventListener("click", selectThisRole);
+            card.addEventListener("keydown", function (e) {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    selectThisRole();
+                }
+            });
+        });
+    }
 });
 
 // ============================================
