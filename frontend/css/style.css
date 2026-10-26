@@ -350,7 +350,6 @@ input, select, textarea {
     margin-bottom: 5px;
 }
 
-.nav-item span,
 .nav-item svg,
 .nav-icon {
     width: 18px;
@@ -362,6 +361,14 @@ input, select, textarea {
     transition: var(--transition);
 }
 
+.nav-item span {
+    font-size: 13.5px;
+    font-weight: 600;
+    white-space: nowrap;
+    line-height: 1.2;
+    transition: var(--transition);
+}
+
 .nav-item:hover {
     color: var(--text);
     background: var(--bg-surface-hover);
@@ -370,7 +377,6 @@ input, select, textarea {
     transform: translateX(2px);
 }
 
-.nav-item:hover span,
 .nav-item:hover svg,
 .nav-item:hover .nav-icon {
     color: var(--text);
@@ -385,7 +391,6 @@ input, select, textarea {
     box-shadow: 0 0 18px rgba(180, 0, 35, 0.5), var(--glass-bevel);
 }
 
-.nav-item.active span,
 .nav-item.active svg,
 .nav-item.active .nav-icon {
     color: #B40023;

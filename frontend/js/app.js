@@ -137,29 +137,34 @@ function renderAuthUI() {
         if (existingDashLink) existingDashLink.remove();
 
         if (currentUser) {
-            const dashLink = document.createElement("a");
-            dashLink.className = "nav-item dynamic-dash-link";
+            const targetHref = currentUser.role === "admin" ? "admin-dashboard.html" : "user-dashboard.html";
+            const alreadyHasLink = nav.querySelector(`a[href*="${targetHref}"]`);
 
-            if (currentUser.role === "admin") {
-                dashLink.href = "admin-dashboard.html";
-                dashLink.innerHTML = `
-                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="#e5a93c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    <span style="color: #e5a93c; font-weight: 600;">Admin Dashboard</span>
-                `;
-            } else {
-                dashLink.href = "user-dashboard.html";
-                dashLink.innerHTML = `
-                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="#4da8da" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
-                    <span style="color: #4da8da; font-weight: 600;">User Dashboard</span>
-                `;
-            }
+            if (!alreadyHasLink) {
+                const dashLink = document.createElement("a");
+                dashLink.className = "nav-item dynamic-dash-link";
 
-            // Insert dashboard link at the top of menu
-            const firstNav = nav.querySelector(".nav-item");
-            if (firstNav) {
-                nav.insertBefore(dashLink, firstNav);
-            } else {
-                nav.prepend(dashLink);
+                if (currentUser.role === "admin") {
+                    dashLink.href = "admin-dashboard.html";
+                    dashLink.innerHTML = `
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="#e5a93c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <span style="color: #e5a93c; font-weight: 600;">Admin Dashboard</span>
+                    `;
+                } else {
+                    dashLink.href = "user-dashboard.html";
+                    dashLink.innerHTML = `
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="#4da8da" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                        <span style="color: #4da8da; font-weight: 600;">User Dashboard</span>
+                    `;
+                }
+
+                // Insert dashboard link at the top of menu
+                const firstNav = nav.querySelector(".nav-item");
+                if (firstNav) {
+                    nav.insertBefore(dashLink, firstNav);
+                } else {
+                    nav.prepend(dashLink);
+                }
             }
         }
 
