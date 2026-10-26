@@ -90,16 +90,19 @@
 
 
                 <!-- QUICK ROLE EVALUATION SELECTOR -->
-                <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 12px 14px; margin-bottom: 20px;">
-                    <div style="font-size: 0.75rem; letter-spacing: 0.05em; color: var(--color-accent, #e5a93c); font-weight: 600; text-transform: uppercase; margin-bottom: 8px;">
-                        ✦ Evaluation Quick Demo Logins:
+                <div class="demo-login-box">
+                    <div class="demo-login-header">
+                        <span class="demo-header-label">✦ EVALUATION QUICK DEMO LOGINS:</span>
+                        <span id="demoActivePill" class="demo-active-pill">Tap a role to test</span>
                     </div>
-                    <div style="display: flex; gap: 8px;">
-                        <button type="button" onclick="quickFillLogin('admin')" style="flex: 1; padding: 8px 10px; font-size: 0.8rem; background: rgba(229, 169, 60, 0.15); border: 1px solid rgba(229, 169, 60, 0.35); color: #fff; border-radius: 8px; cursor: pointer; transition: all 0.2s;">
-                            👑 Fill Admin
+                    <div class="demo-btn-group">
+                        <button type="button" id="btnFillAdmin" class="demo-fill-btn admin" onclick="quickFillLogin('admin')">
+                            <span class="btn-check">✓</span>
+                            <span class="btn-label">👑 Fill Admin</span>
                         </button>
-                        <button type="button" onclick="quickFillLogin('user')" style="flex: 1; padding: 8px 10px; font-size: 0.8rem; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: #fff; border-radius: 8px; cursor: pointer; transition: all 0.2s;">
-                            🎧 Fill User
+                        <button type="button" id="btnFillUser" class="demo-fill-btn user" onclick="quickFillLogin('user')">
+                            <span class="btn-check">✓</span>
+                            <span class="btn-label">🎧 Fill User</span>
                         </button>
                     </div>
                 </div>

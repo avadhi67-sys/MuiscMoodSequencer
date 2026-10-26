@@ -213,18 +213,46 @@ if (loginForm) {
     });
 }
 
-// Quick Demo Login Fill Helper for evaluation testing
+// Quick Demo Login Fill Helper for evaluation testing (with Active Border & Glow Feedback)
 function quickFillLogin(role) {
     const emailInput = document.getElementById("loginEmail");
     const passwordInput = document.getElementById("loginPassword");
-    if (!emailInput || !passwordInput) return;
+    const btnAdmin = document.getElementById("btnFillAdmin");
+    const btnUser = document.getElementById("btnFillUser");
+    const pill = document.getElementById("demoActivePill");
+
+    if (btnAdmin) btnAdmin.classList.remove("active");
+    if (btnUser) btnUser.classList.remove("active");
 
     if (role === "admin") {
-        emailInput.value = "admin@sonicflow.com";
-        passwordInput.value = "admin123";
+        if (emailInput) emailInput.value = "admin@sonicflow.com";
+        if (passwordInput) passwordInput.value = "admin123";
+        if (btnAdmin) btnAdmin.classList.add("active");
+        if (pill) {
+            pill.textContent = "✓ Admin Selected";
+            pill.className = "demo-active-pill admin";
+        }
     } else {
-        emailInput.value = "user@sonicflow.com";
-        passwordInput.value = "user123";
+        if (emailInput) emailInput.value = "user@sonicflow.com";
+        if (passwordInput) passwordInput.value = "user123";
+        if (btnUser) btnUser.classList.add("active");
+        if (pill) {
+            pill.textContent = "✓ User Selected";
+            pill.className = "demo-active-pill user";
+        }
     }
+
+    // Input flash feedback
+    [emailInput, passwordInput].forEach(function (inp) {
+        if (!inp) return;
+        inp.style.transition = "border-color 0.25s ease, box-shadow 0.25s ease";
+        const accent = role === "admin" ? "#ff4d6d" : "#00d2ff";
+        inp.style.borderColor = accent;
+        inp.style.boxShadow = "0 0 0 3px " + (role === "admin" ? "rgba(255, 77, 109, 0.3)" : "rgba(0, 210, 255, 0.3)");
+        setTimeout(function () {
+            inp.style.borderColor = "";
+            inp.style.boxShadow = "";
+        }, 600);
+    });
 }
 window.quickFillLogin = quickFillLogin;

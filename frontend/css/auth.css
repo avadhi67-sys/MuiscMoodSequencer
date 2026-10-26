@@ -557,3 +557,119 @@
 .role-card[data-role="admin"].active .role-card-title {
     color: #FF7799;
 }
+
+/* ==========================================================================
+   EVALUATION DEMO LOGIN BUTTONS (Active Border & Status Indicators)
+   ========================================================================== */
+
+.demo-login-box {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.demo-login-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    gap: 8px;
+}
+
+.demo-header-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: #e5a93c;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.demo-active-pill {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.25s ease;
+}
+
+.demo-active-pill.admin {
+    background: rgba(255, 77, 109, 0.2);
+    color: #ff758f;
+    border-color: rgba(255, 77, 109, 0.4);
+}
+
+.demo-active-pill.user {
+    background: rgba(0, 210, 255, 0.18);
+    color: #66e5ff;
+    border-color: rgba(0, 210, 255, 0.4);
+}
+
+.demo-btn-group {
+    display: flex;
+    gap: 10px;
+}
+
+.demo-fill-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 11px 12px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.04);
+    border: 2px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+}
+
+.demo-fill-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.28);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.demo-fill-btn .btn-check {
+    display: none;
+    font-weight: 900;
+    font-size: 0.95rem;
+}
+
+/* --- ACTIVE STATE: ADMIN BUTTON CLICKED --- */
+.demo-fill-btn.admin.active {
+    border: 2px solid #ff4d6d !important;
+    background: linear-gradient(135deg, rgba(255, 77, 109, 0.22) 0%, rgba(255, 255, 255, 0.05) 100%) !important;
+    box-shadow: 0 0 0 3px rgba(255, 77, 109, 0.35), 0 6px 18px rgba(255, 77, 109, 0.25) !important;
+    color: #ffffff !important;
+    transform: translateY(-1px);
+}
+
+.demo-fill-btn.admin.active .btn-check {
+    display: inline-block;
+    color: #ff758f;
+}
+
+/* --- ACTIVE STATE: USER BUTTON CLICKED --- */
+.demo-fill-btn.user.active {
+    border: 2px solid #00d2ff !important;
+    background: linear-gradient(135deg, rgba(0, 210, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%) !important;
+    box-shadow: 0 0 0 3px rgba(0, 210, 255, 0.35), 0 6px 18px rgba(0, 210, 255, 0.22) !important;
+    color: #ffffff !important;
+    transform: translateY(-1px);
+}
+
+.demo-fill-btn.user.active .btn-check {
+    display: inline-block;
+    color: #66e5ff;
+}
