@@ -1,0 +1,23 @@
+{
+  "name": "sonicflow-music-mood-sequencer",
+  "version": "2.0.0",
+  "description": "SonicFlow - Music Mood Sequencer with Node.js, Express, MongoDB & Role-based Dashboards",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["music", "sequencer", "mood", "express", "mongodb", "audio"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^8.24.6",
+    "multer": "^2.5.0"
+  }
+}

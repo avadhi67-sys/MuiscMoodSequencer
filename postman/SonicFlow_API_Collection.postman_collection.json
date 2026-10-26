@@ -1,0 +1,519 @@
+{
+	"info": {
+		"_postman_id": "a987d654-e321-4cba-9876-123456789abc",
+		"name": "SonicFlow - Music Mood Sequencer REST APIs",
+		"description": "Complete REST API collection for SonicFlow 2.0 backend evaluation. Includes Auth (JWT & bcrypt), Songs CRUD, Artists CRUD, and Analytics endpoints with automated token capture.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:5000",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "songId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "artistId",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "0. Health Check",
+			"item": [
+				{
+					"name": "Server Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/health",
+							"host": ["{{baseUrl}}"],
+							"path": ["health"]
+						},
+						"description": "Verifies server is online and running."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "1. Authentication",
+			"item": [
+				{
+					"name": "Login as Admin (Auto-saves Token)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData.token) {",
+									"    pm.collectionVariables.set('token', jsonData.token);",
+									"    console.log('Saved token to collection variable');",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@sonicflow.com\",\n    \"password\": \"admin123\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/login",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "auth", "login"]
+						},
+						"description": "Logs in as pre-seeded Admin and sets collection variable 'token' automatically."
+					},
+					"response": []
+				},
+				{
+					"name": "Login as Regular User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"user@sonicflow.com\",\n    \"password\": \"user123\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/login",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "auth", "login"]
+						},
+						"description": "Logs in as regular listener."
+					},
+					"response": []
+				},
+				{
+					"name": "Register New User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Jane Doe\",\n    \"email\": \"jane.doe@example.com\",\n    \"password\": \"password123\",\n    \"role\": \"user\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/register",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "auth", "register"]
+						},
+						"description": "Registers a new user in MongoDB Atlas with bcrypt password encryption."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Current Profile (Me)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/me",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "auth", "me"]
+						},
+						"description": "Returns current logged in user profile using JWT token."
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Registered Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/users",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "auth", "users"]
+						},
+						"description": "Lists all users stored in MongoDB Atlas (passwords excluded)."
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/logout",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "auth", "logout"]
+						},
+						"description": "Clears authentication cookies."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2. Songs",
+			"item": [
+				{
+					"name": "Get All Songs",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData.songs && jsonData.songs.length > 0) {",
+									"    pm.collectionVariables.set('songId', jsonData.songs[0]._id || jsonData.songs[0].id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/songs",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "songs"]
+						},
+						"description": "Returns all songs from MongoDB Atlas and auto-saves the first song's ID to {{songId}}."
+					},
+					"response": []
+				},
+				{
+					"name": "Search Songs by Mood",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/songs?mood=Energetic",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "songs"],
+							"query": [
+								{
+									"key": "mood",
+									"value": "Energetic"
+								}
+							]
+						},
+						"description": "Filters songs by mood (Energetic, Calm, Happy, Dreamy, Chill)."
+					},
+					"response": []
+				},
+				{
+					"name": "Search Songs by Keyword",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/songs?search=Horizon",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "songs"],
+							"query": [
+								{
+									"key": "search",
+									"value": "Horizon"
+								}
+							]
+						},
+						"description": "Performs regex search across song title, artist, and mood."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Song by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/songs/{{songId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "songs", "{{songId}}"]
+						},
+						"description": "Retrieves song details by MongoDB ObjectId."
+					},
+					"response": []
+				},
+				{
+					"name": "Create Song (Admin)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData.song) {",
+									"    pm.collectionVariables.set('songId', jsonData.song._id || jsonData.song.id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Neon Skyline\",\n    \"artist\": \"Volt Rhythm\",\n    \"mood\": \"Energetic\",\n    \"energy\": 8,\n    \"tempo\": 128,\n    \"audioUrl\": \"/assets/audio/energetic.mp3\",\n    \"imageUrl\": \"/images/covers/cover-3.png\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/songs",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "songs"]
+						},
+						"description": "Adds a new song to MongoDB Atlas."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Song (Admin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Neon Skyline (Remastered)\",\n    \"energy\": 9,\n    \"tempo\": 130\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/songs/{{songId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "songs", "{{songId}}"]
+						},
+						"description": "Updates an existing song record."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Song (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/songs/{{songId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "songs", "{{songId}}"]
+						},
+						"description": "Deletes a song from MongoDB Atlas by ID."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3. Artists",
+			"item": [
+				{
+					"name": "Get All Artists",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData.artists && jsonData.artists.length > 0) {",
+									"    pm.collectionVariables.set('artistId', jsonData.artists[0]._id || jsonData.artists[0].id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/artists",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "artists"]
+						},
+						"description": "Fetches all artists with live song count aggregations."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Artist by Name or ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/artists/Luna%20Waves",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "artists", "Luna%20Waves"]
+						},
+						"description": "Returns artist details along with all their discography tracks."
+					},
+					"response": []
+				},
+				{
+					"name": "Create Artist (Admin)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData.artist) {",
+									"    pm.collectionVariables.set('artistId', jsonData.artist._id || jsonData.artist.id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Aurora Synth\",\n    \"mood\": \"Dreamy\",\n    \"bio\": \"Ambient electronic composer crafting cinematic auditory journeys.\",\n    \"image\": \"/images/covers/cover-2.png\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/artists",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "artists"]
+						},
+						"description": "Creates a new artist profile in MongoDB Atlas."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Artist (Admin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bio\": \"Updated bio: Award-winning ambient electronic composer.\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/artists/{{artistId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "artists", "{{artistId}}"]
+						},
+						"description": "Updates artist bio, mood, or image."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Artist (Admin)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/artists/{{artistId}}",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "artists", "{{artistId}}"]
+						},
+						"description": "Deletes artist profile by ID."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "4. Statistics",
+			"item": [
+				{
+					"name": "Get System Analytics (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/stats",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "stats"]
+						},
+						"description": "Returns counts for songs, artists, users, unique moods, and average energy/tempo."
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
