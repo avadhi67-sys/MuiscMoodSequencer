@@ -185,8 +185,7 @@ git push origin main
    - `MONGODB_URI` = `mongodb+srv://avadhi3137beai24_db_user:Avadhi12@cluster0.ozfgkzq.mongodb.net/college?appName=Cluster0`
    - `JWT_SECRET` = `sonicflow_super_secret_jwt_key_2026_eval`
 6. Click **Deploy Web Service**.
-7. Once deployed, Render will provide your public URL (e.g., `https://sonicflow-backend.onrender.com`).
-
+Deployed Linkc : "https://muiscmoodsequencer.onrender.com"
 ---
 
 ## 🔗 Frontend Integration (Switching to Deployed URL)
